@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sifat — Portfolio</title>
+  <!-- Modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Vibrant, modern palette */
+      --bg: #0b1023;
+      --bg-2: #0f1632;
+      --primary: #6ee7ff;
+      --secondary: #ff7ab6;
+      --accent: #7cff7a;
+      --card: #151c3a;
+      --text: #f5f7ff;
+      --muted: #a7b1d6;
+      --shadow: 0 20px 40px rgba(0,0,0,0.35);
+      --radius: 16px;
+    }
+    *{box-sizing: border-box}
+    html,body{margin:0; padding:0; background: radial-gradient(1200px 600px at 80% -20%, #1b2350 0%, #0b1023 50%), var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; scroll-behavior: smooth;}
+    /* Layout */
+    .container{width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;}
+    /* Navbar */
+    header{
+      position: sticky; top:0; z-index: 50; backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(15,22,50,0.8), rgba(15,22,50,0.4));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; padding:14px 0;
+    }
+    .brand{font-weight:800; letter-spacing:0.2px; color:var(--primary)}
+    .links{display:flex; flex-wrap:wrap; gap:12px}
+    .links a{
+      color: var(--text); text-decoration:none; font-weight:600; padding:8px 12px; border-radius:12px;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .links a:hover{transform: translateY(-2px); background: rgba(255,255,255,0.08)}
+    /* Hero / Intro */
+    .hero{min-height: 92vh; display:grid; place-items:center; position:relative; overflow:hidden;}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center}
+    @media (max-width: 980px){ .hero-grid{grid-template-columns: 1fr; gap: 22px} }
+    .intro-card{
+      background: linear-gradient(180deg, rgba(21,28,58,0.9), rgba(21,28,58,0.75));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow);
+      animation: fadeInUp .8s ease both;
+    }
+    .intro-card h1{font-size: clamp(28px, 5vw, 48px); margin:0 0 10px}
+    .intro-card p{color: var(--muted); font-size: clamp(14px, 2.4vw, 17px); line-height: 1.7}
+    .tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .tag{background: rgba(110,231,255,0.12); color: var(--primary); border:1px solid rgba(110,231,255,0.35); padding:6px 10px; border-radius:999px; font-size: 13px; font-weight:600}
+    .cta{display:flex; gap:12px; margin-top:22px}
+    .btn{
+      all:unset; cursor:pointer; background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color:#0b1023; font-weight:800; padding:12px 18px; border-radius:12px; box-shadow: var(--shadow); transition: transform .2s ease
+    }
+    .btn:hover{transform: translateY(-2px)}
+    .btn.secondary{
+      background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.16)
+    }
+    .intro-image{
+      border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
+      position:relative; box-shadow: var(--shadow);
+      animation: floatIn .9s ease both;
+    }
+    .intro-image img{width:100%; height: 100%; object-fit: cover; display:block}
+    .intro-glow{
+      position:absolute; inset:-2px; border-radius:var(--radius);
+      background: radial-gradient(400px 200px at 80% 10%, rgba(255,122,182,0.15), transparent 60%),
+                  radial-gradient(400px 200px at 20% 90%, rgba(110,231,255,0.18), transparent 60%);
+      pointer-events:none;
+    }
+    /* Sections */
+    section{padding: 70px 0}
+    .section-title{
+      font-size: clamp(22px, 3.6vw, 32px); margin: 0 0 18px; letter-spacing:0.3px
+    }
+    .section-sub{color: var(--muted); margin-bottom: 22px}
+    /* Cards grid */
+    .grid{
+      display:grid; gap: 18px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    /* Responsive columns: 4 per row on desktop, 2 on tablet, 1 on mobile */
+    .col-3{grid-column: span 3}
+    @media (max-width: 1100px){ .col-3{grid-column: span 4} }
+    @media (max-width: 780px){ .col-3{grid-column: span 12} }
+    .card{
+      background: linear-gradient(180deg, rgba(21,28,58,0.9), rgba(21,28,58,0.7));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); padding: 18px; position:relative; overflow:hidden;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .card:hover{ transform: translateY(-4px); box-shadow: 0 26px 50px rgba(0,0,0,0.4); border-color: rgba(110,231,255,0.35) }
+    .card h4{margin: 6px 0 6px; font-size: 18px}
+    .card p{color: var(--muted); font-size: 14px; line-height:1.7}
+    .badge{display:inline-block; font-size:12px; font-weight:700; color:#0b1023; background: linear-gradient(90deg, var(--accent), var(--primary)); padding:6px 10px; border-radius:999px}
+    .thumb{
+      aspect-ratio: 16/9; border-radius: 10px; overflow:hidden; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+    /* Gallery */
+    .gallery{
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .g-3{grid-column: span 3}
+    @media (max-width: 1100px){ .g-3{grid-column: span 4} }
+    @media (max-width: 780px){ .g-3{grid-column: span 12} }
+    .photo{
+      border-radius: 12px; overflow:hidden; border:1px solid rgba(255,255,255,0.08);
+      transition: transform .2s ease, box-shadow .2s ease; box-shadow: var(--shadow);
+    }
+    .photo:hover{ transform: translateY(-3px) scale(1.01); box-shadow: 0 26px 50px rgba(0,0,0,0.5) }
+    .photo img{width:100%; height:100%; object-fit:cover; display:block}
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(15,22,50,0.7), rgba(15,22,50,0.4));
+      padding: 40px 0; margin-top: 30px;
+    }
+    .foot-grid{display:grid; gap: 22px; grid-template-columns: repeat(3, 1fr)}
+    @media (max-width: 860px){ .foot-grid{grid-template-columns: 1fr} }
+    .foot h5{margin:0 0 10px; font-size: 16px}
+    .foot a{color: var(--primary); text-decoration:none}
+    .copyright{margin-top: 16px; color: var(--muted); font-size: 13px}
+    /* Scroll prompts */
+    .scroll-indicator{
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: var(--muted);
+      font-size: 13px; display:flex; align-items:center; gap:8px; opacity:0.9;
+    }
+    .chev{width: 12px; height: 12px; border-right: 2px solid var(--muted); border-bottom:2px solid var(--muted); transform: rotate(45deg); animation: bounce 1.2s infinite}
+    @keyframes bounce{ 0%,100%{ transform: translateY(0) rotate(45deg)} 50%{ transform: translateY(6px) rotate(45deg)} }
+    /* Animations */
+    @keyframes fadeInUp{ from{opacity:0; transform: translateY(18px)} to{opacity:1; transform: translateY(0)} }
+    @keyframes floatIn{ from{opacity:0; transform: translateY(18px) scale(0.98)} to{opacity:1; transform: translateY(0) scale(1)} }
+    /* Section reveal */
+    .reveal{opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform: translateY(0)}
+    /* Utilities */
+    .pill{display:inline-block; padding:8px 12px; border-radius:999px; background: rgba(255,255,255,0.08)}
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="container nav">
+      <div class="brand">SIFAT</div>
+      <nav class="links">
+        <a href="#intro">Intro</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#ml">ML Projects</a>
+        <a href="#instrumentation">Instrumentation</a>
+        <a href="#circuit">Circuit Design</a>
+        <a href="#solidworks">SolidWorks</a>
+        <a href="#webapps">Web Apps</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#publications">Publications</a>
+        <a href="#photos">Photos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section id="intro" class="hero">
+    <div class="container hero-grid">
+      <div class="intro-card">
+        <h1>Hi, I’m Sifat — engineer, maker, and storyteller.</h1>
+        <p>
+          I design human-centered digital health products, build intelligent systems, and craft accessible web apps.
+          My work bridges healthcare innovation with modern engineering, turning complexity into clarity and impact.
+        </p>
+        <div class="tags">
+          <span class="tag">Biomedical imaging</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">FastAPI & Web</span>
+          <span class="tag">UX + Accessibility</span>
+        </div>
+        <div class="cta">
+          <a class="btn" href="#webapps">View my work</a>
+          <a class="btn secondary" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <!-- Replace with your image -->
+        <img src="me1 (2).jpg" alt="Sifat portrait"/>
+        <div class="intro-glow"></div>
+      </div>
+    </div>
+    <div class="scroll-indicator"><span class="chev"></span> Scroll</div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="container reveal">
+      <h3 class="section-title">Education background</h3>
+      <p class="section-sub">Foundations that shape my systems thinking and research depth.</p>
+      <div class="grid">
+        <div class="card col-3">
+          <div class="badge">BSc Engineering</div>
+          <h4>Khulna University of Engineering & Technology (KUET)</h4>
+          <p>Focused on biomedical engineering, signal processing, and microwave imaging. Led capstone on patient-centered diagnostics.</p>
+        </div>
+        <div class="card col-3">
+          <div class="badge">Postgrad</div>
+          <h4>Mass Communication & Journalism</h4>
+          <p>Explored science communication, ethical tech, and user trust. Strengthened storytelling in complex healthcare systems.</p>
+        </div>
+        <div class="card col-3">
+          <div class="badge">Continuous learning</div>
+          <h4>Online coursework</h4>
+          <p>Advanced ML, deep learning evaluation, SVM kernel analysis, and accessible web design.</p>
+        </div>
+        <div class="card col-3">
+          <div class="badge">Certificates</div>
+          <h4>Selected certifications</h4>
+          <p>Python, FastAPI, UX accessibility, product design, and deployment on free clouds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="container reveal">
+      <h3 class="section-title">Working experience</h3>
+      <p class="section-sub">Hands-on roles shipping real products and research prototypes.</p>
+      <div class="grid">
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1583912267957-9e0c03477c04?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>Product designer — Digital Health</h4>
+          <p>Designed accessible workflows, built dashboards, and defined brand systems for hospital apps.</p>
+        </div>
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>ML engineer</h4>
+          <p>Evaluated models, built pipelines, and crafted metrics for trustworthy clinical ML.</p>
+        </div>
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>Full‑stack developer</h4>
+          <p>Shipped FastAPI services, real-time messaging, PDF export, and modern responsive UIs.</p>
+        </div>
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>Research associate</h4>
+          <p>Biomedical microwave imaging with reproducible methods and transparent reporting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ML Projects -->
+  <section id="ml">
+    <div class="container reveal">
+      <h3 class="section-title">Machine learning projects</h3>
+      <p class="section-sub">Reliable, explainable, and evaluated with rigor.</p>
+      <div class="grid">
+        <div class="card col-3">
+          <div class="badge">CV · Healthcare</div>
+          <h4>Radiology triage assistant</h4>
+          <p>Active learning pipeline with model calibration and uncertainty dashboards.</p>
+        </div>
+        <div class="card col-3">
+          <div class="badge">NLP</div>
+          <h4>Clinical note summarizer</h4>
+          <p>Abstractive summaries optimized for readability and clinician feedback loops.</p>
+        </div>
+        <div class="card col-3">
+          <div class="badge">Signal</div>
+          <h4>ECG anomaly detection</h4>
+          <p>Self‑supervised features, robust thresholds, and on‑device deployment.</p>
+        </div>
+        <div class="card col-3">
+          <div class="badge">Ops</div>
+          <h4>ML evaluation suite</h4>
+          <p>Fairness, drift, and SVM kernel analysis visualized in a single toolkit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instrumentation Projects -->
+  <section id="instrumentation">
+    <div class="container reveal">
+      <h3 class="section-title">Instrumentation projects</h3>
+      <p class="section-sub">From sensors to systems — practical, reliable builds.</p>
+      <div class="grid">
+        <div class="card col-3">
+          <h4>Patient vitals monitor</h4>
+          <p>IoT telemetry, secure data channels, and clean bedside UI.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Smart imaging phantom</h4>
+          <p>Repeatable calibration object for microwave imaging experiments.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Wearable posture tracker</h4>
+          <p>Low‑power IMU device with adaptive sampling and BLE sync.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Lab automation scripts</h4>
+          <p>Python + microcontrollers to streamline testing workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Circuit Design -->
+  <section id="circuit">
+    <div class="container reveal">
+      <h3 class="section-title">Circuit design projects</h3>
+      <p class="section-sub">Carefully simulated and validated for real‑world performance.</p>
+      <div class="grid">
+        <div class="card col-3">
+          <h4>Low‑noise amplifier</h4>
+          <p>Optimized for SNR with thermal stability and compact PCB layout.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Power management module</h4>
+          <p>High‑efficiency buck topology with soft‑start and protections.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Signal conditioning board</h4>
+          <p>Precision filtering for biomedical sensors, EMI‑aware routing.</p>
+        </div>
+        <div class="card col-3">
+          <h4>RF front‑end prototype</h4>
+          <p>Matched networks tuned for imaging band, verified in lab.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SolidWorks Design -->
+  <section id="solidworks">
+    <div class="container reveal">
+      <h3 class="section-title">SolidWorks design projects</h3>
+      <p class="section-sub">Industrial aesthetics meet functional engineering.</p>
+      <div class="grid">
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1581092923566-9659f1f61b22?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>Medical device enclosure</h4>
+          <p>Tool‑less assembly, heat management, and ergonomic detailing.</p>
+        </div>
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1571882172131-c949bfe2cb54?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>Motion stage</h4>
+          <p>Rigid, precise, and modular for lab automation tasks.</p>
+        </div>
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>Wearable housing</h4>
+          <p>Comfort‑first design with snap‑fits and gasket seals.</p>
+        </div>
+        <div class="card col-3">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+          <h4>Portable console</h4>
+          <p>Robust shell, intuitive interfaces, and accessible maintenance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web Apps -->
+  <section id="webapps">
+    <div class="container reveal">
+      <h3 class="section-title">Web app projects</h3>
+      <p class="section-sub">FastAPI services, modern UIs, and inclusive design.</p>
+      <div class="grid">
+        <div class="card col-3">
+          <h4>Arctic Nursing Home</h4>
+          <p>Hospital management platform with chat, PDF export, and fluid UI.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Health records portal</h4>
+          <p>Secure patient profiles, doctor workflows, and analytics.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Realtime triage board</h4>
+          <p>Live updates, accessibility features, and role‑based views.</p>
+        </div>
+        <div class="card col-3">
+          <h4>Research hub</h4>
+          <p>Paper management, summaries, and collaboration tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <div class="container reveal">
+      <h3 class="section-title">Achievements</h3>
+      <p class="section-sub">Milestones that reflect persistence and purpose.</p>
+      <div class="grid">
+        <div class="card col-3"><h4>Best UX Award</h4><p>Recognized for accessible, patient‑friendly design.</p></div>
+        <div class="card col-3"><h4>Research grant</h4><p>Funded biomedical imaging study with open methods.</p></div>
+        <div class="card col-3"><h4>Open‑source maintainer</h4><p>Tools for ML evaluation and fair reporting.</p></div>
+        <div class="card col-3"><h4>Community builder</h4><p>Workshops on web accessibility and ethical AI.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <div class="container reveal">
+      <h3 class="section-title">Publications</h3>
+      <p class="section-sub">Peer‑reviewed and practitioner‑focused writing.</p>
+      <div class="grid">
+        <div class="card col-3"><h4>Microwave imaging review</h4><p>Survey of techniques, metrics, and reproducibility.</p></div>
+        <div class="card col-3"><h4>Trust in clinical ML</h4><p>Evaluation narratives for responsible deployment.</p></div>
+        <div class="card col-3"><h4>Accessible app patterns</h4><p>Designing for clarity, consistency, and inclusion.</p></div>
+        <div class="card col-3"><h4>Patient‑doctor workflows</h4><p>Systems design for communication and empathy.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section id="photos">
+    <div class="container reveal">
+      <h3 class="section-title">Some photos</h3>
+      <p class="section-sub">Moments, prototypes, and workspaces.</p>
+      <div class="gallery">
+        <div class="photo g-3"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+        <div class="photo g-3"><img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+        <div class="photo g-3"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+        <div class="photo g-3"><img src="https://images.unsplash.com/photo-1581092923566-9659f1f61b22?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container foot-grid">
+      <div class="foot">
+        <h5>Contact</h5>
+        <p>Email: <a href="mailto:sifat@example.com">sifat@example.com</a></p>
+        <p>LinkedIn: <a href="#" target="_blank" rel="noopener">linkedin.com/in/sifat</a></p>
+        <p>GitHub: <a href="#" target="_blank" rel="noopener">github.com/sifat</a></p>
+      </div>
+      <div class="foot">
+        <h5>References</h5>
+        <p><a href="#" target="_blank" rel="noopener">Portfolio case study</a></p>
+        <p><a href="#" target="_blank" rel="noopener">Design system</a></p>
+      </div>
+      <div class="foot">
+        <h5>Resume</h5>
+        <p><a href="#" target="_blank" rel="noopener">Download CV (PDF)</a></p>
+        <div class="row">
+          <span class="pill">Open to roles</span>
+          <span class="pill">Freelance</span>
+          <span class="pill">Speaking</span>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Sifat. Built with care and accessibility.</div>
+    </div>
+  </footer>
+
+  <!-- Interactivity & reveal on scroll -->
+  <script>
+    // Section reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const onScroll = () => {
+      const trigger = window.innerHeight * 0.92;
+      reveals.forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        if(top < trigger){ el.classList.add('show'); }
+      });
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('load', onScroll);
+
+    // Smooth highlight active nav link
+    const sections = [...document.querySelectorAll('section')];
+    const navLinks = [...document.querySelectorAll('.links a')];
+    const setActive = () => {
+      let idx = 0;
+      sections.forEach((s,i)=>{
+        const rect = s.getBoundingClientRect();
+        if(rect.top < window.innerHeight*0.3) idx = i;
+      });
+      navLinks.forEach(l=>l.style.color = 'var(--text)');
+      const activeId = sections[idx]?.id;
+      const activeLink = navLinks.find(l => l.getAttribute('href') === `#${activeId}`);
+      if(activeLink) activeLink.style.color = 'var(--primary)';
+    };
+    document.addEventListener('scroll', setActive, {passive:true});
+    window.addEventListener('load', setActive);
+
+    // Optional: gentle parallax glow on hero image
+    const glow = document.querySelector('.intro-glow');
+    document.addEventListener('mousemove', (e)=>{
+      if(!glow) return;
+      const x = (e.clientX / window.innerWidth - 0.5) * 10;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      glow.style.transform = `translate(${x}px, ${y}px)`;
+    }, {passive:true});
+  </script>
+</body>
+</html>
