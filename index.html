@@ -20,6 +20,57 @@
       --shadow: 0 20px 40px rgba(0,0,0,0.35);
       --radius: 16px;
     }
+    .slider-img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+    }
+    .slider-container {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+      background: #000;
+    }
+    .slider-slides {
+      display: flex;
+      width: 300%;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .slider-btn-left {
+      left: 8px;
+    }
+    .slider-btn-right {
+      right: 8px;
+    }
+    .slider-badge {
+      display: inline-block;
+      background: #5b6cff;
+      color: #000;
+      padding: 4px 10px;
+      border-radius: 14px;
+      font-size: 12px;
+      margin: 8px 0;
+    }
+    .slider-card {
+      background: #01051d;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      color: #ffffff;
+    }
     *{box-sizing: border-box}
     html,body{margin:0; padding:0; background: radial-gradient(1200px 600px at 80% -20%, #1b2350 0%, #0b1023 50%), var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; scroll-behavior: smooth;}
     /* Layout */
@@ -173,7 +224,7 @@
   <section id="intro" class="hero">
     <div class="container hero-grid">
       <div class="intro-card">
-        <h1>Hi, I’m Sifat Khan — engineer, researcher, and technical person.</h1>
+        <h1>Hi, I’m K. M. Sifat— engineer, researcher, and technical person.</h1>
         <p>
          I design human‑centered digital health products, engineer intelligent systems, and build accessible web apps. My work fuses healthcare innovation with modern engineering, applying AI for diagnostics, decision support, and simulation modeling. Beyond digital health, I craft SolidWorks designs, circuits, and instrumentation projects. With proven leadership, management, and case study expertise, I deliver impactful solutions across technology and strategy.
         </p>
@@ -235,30 +286,60 @@
   <section id="experience">
     <div class="container reveal">
       <h3 class="section-title">Working experience</h3>
-      <p class="section-sub">Hands-on roles shipping real products and research prototypes.</p>
+      <p class="section-sub">Practical & Job Experiences</p>
       <div class="grid">
         <div class="card col-3">
-          <div class="thumb"><img src="https://images.unsplash.com/photo-1583912267957-9e0c03477c04?q=80&w=1200&auto=format&fit=crop" alt=""></div>
-          <h4>Product designer — Digital Health</h4>
-          <p>Designed accessible workflows, built dashboards, and defined brand systems for hospital apps.</p>
+          <div class="thumb"><img src="Dinning Monitor.jpeg" alt=""></div>
+          <h4>Dinning Monitor, Dr. M. A Rashid Hall, KUET</h4>
+          <p style="color:rgb(226, 209, 209);"><b>September 2024 – October 2025</b></p>
+          <ul>
+  <li>Oversaw dining operations ensuring quality, discipline, and financial sustainability.</li>
+  <li>Acted as bridge between administration, dining staff, and resident students.</li>
+  <li>Implemented accountability in purchasing and upgraded pay scale for workers.</li>
+  <li>Engaged junior students in decision‑making to improve transparency.</li>
+  <li>Managed cost‑effective procurement of furniture and utensils.</li>
+  <li>Upgraded environment, cleanliness, and improved light/air circulation.</li>
+  <li>Organized 14 monthly feasts and 1 annual celebration.</li>
+</ul>
+
+<div class="tags">
+  <span class="tag">Leadership</span>
+  <span class="tag">Management</span>
+  <span class="tag">Community Building</span>
+  <span class="tag">Operational Excellence</span>
+</div>
+
         </div>
         <div class="card col-3">
-          <div class="thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt=""></div>
-          <h4>ML engineer</h4>
-          <p>Evaluated models, built pipelines, and crafted metrics for trustworthy clinical ML.</p>
+          <div class="thumb"><img src="feast.jpeg" alt=""></div>
+          <h4>Annual Feast Organizer in Dr. M. A Rashid Hall, KUET</h4>
+          <p style="color:rgb(226, 209, 209);"><b>January 2025</b></p>
+          <ul>
+  <li>Arranged Annual Feast 2025 at Dr. M. A Rashid Hall, KUET for 500 resident students</li>
+  <li>Served as Food Service & Snacks Coordinator ensuring smooth distribution to all attendees.</li>
+  <li>Negotiated with vendors and suppliers to cut costs effectively.</li>
+</ul>
+
+<div class="tags">
+  <span class="tag">Event Management</span>
+  <span class="tag">Leadership</span>
+  <span class="tag">Cost Optimization</span>
+  <span class="tag">Community Engagement</span>
+</div>
         </div>
         <div class="card col-3">
           <div class="thumb"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt=""></div>
-          <h4>Full‑stack developer</h4>
-          <p>Shipped FastAPI services, real-time messaging, PDF export, and modern responsive UIs.</p>
-        </div>
-        <div class="card col-3">
-          <div class="thumb"><img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt=""></div>
-          <h4>Research associate</h4>
-          <p>Biomedical microwave imaging with reproducible methods and transparent reporting.</p>
-        </div>
-      </div>
-    </div>
+          <h4>Teaching & Mentoring </h4>
+          <p style="color:rgb(226, 209, 209);"><b>From 2019 to Present </b></p>
+          <p style="color:rgb(255, 255, 255);"><b>I Provided paid and unpaid teaching and mentorship to more than 20+ highschool students and several
+             privatio coaching center during my undergraduation </b></p>
+             <div class="tags">
+  <span class="tag">Teaching </span>
+  <span class="tag">Mentorship</span>
+  <span class="tag">Trainer</span>
+  <span class="tag">Learner Engagement</span>
+</div>
+        
   </section>
 
   <!-- ML Projects -->
@@ -268,51 +349,285 @@
       <p class="section-sub">Reliable, explainable, and evaluated with rigor.</p>
       <div class="grid">
         <div class="card col-3">
-          <div class="badge">CV · Healthcare</div>
-          <h4>Radiology triage assistant</h4>
-          <p>Active learning pipeline with model calibration and uncertainty dashboards.</p>
+          <div class="thumb"><img src="result_ped_seg.png" alt="segmentation result"></div>
+          <div class="badge">medical Image Segmentation</div>
+          <h4>Left Ventricle Segmentation from pediatric (child) echocardiogram to estimate ejection fraction </h4>
+          <p>Here dataset taken from <a href="https://doi.org/10.71718/d05h-gy43">
+    <span class="tag">EchoNet-Pediatric</span>
+</a>
+Then it preprocessed and applied several segmentation models, but in <b>deeplabV3+</b> provide the best <b style="color:#7cff7a;">IOU= 0.8953 (training)
+0.8426 (testing) </b> 
+and <b style="color:#7cff7a;"> Dice coefficient= 0.9465 (training) 0.9177 (testing)</b>
+Here code snippet in github of full project <a href="https://github.com/Sifatkhan-1915020/medical-image-segmentation-/blob/main/echonet_pediatric.ipynb">
+    <span class="tag">Code & Result </span>
+</a>
+</p>
         </div>
-        <div class="card col-3">
+     <!---ML2-->
+      <div class="card col-3">
+          <div class="thumb"><img src="EEG_CHB_MIT.png" alt="EEG Preprocessing"></div>
+          <div class="badge">EEG Signal Preprocessing </div>
+          <h4>Here EEG Dataset has been preprocessed using python to train the model </h4>
+          <p>Here dataset taken from <a href="https://doi.org/10.13026/C2K01R">
+    <span class="tag">CHB-MIT Scalp EEG Database</span>
+</a>
+ The dataset, compiled at Children’s Hospital Boston, contains EEG recordings from pediatric patients with drug‑resistant epilepsy. Each subject was monitored for several days after discontinuation of anti‑seizure medication to better characterize seizure activity and evaluate their suitability for surgical treatment. The recordings span 23 cases drawn from 22 individuals (5 males aged 3–22 years and 17 females aged 1.5–19 years). After preprocessing, the data were segmented into five‑second epochs, distinguishing seizure from non‑seizure EEG segments. The accompanying code demonstrates this processing workflow.
+
+
+
+ <a href="https://github.com/Sifatkhan-1915020/CHb-MIT-EEG/tree/main/Preprocessing">
+    <span class="tag">Preprocessing Code</span>
+</a>
+</p>
+        </div>
+
+        <!---ML3-->
+ <div class="card col-3">
+          <div class="thumb"><img src="eeg_emotion.png" alt="EEG to Emotion"></div>
+          <div class="badge">EEG Signal </div>
+          <h4> Emotion Classifiction from EEG signal dataset</h4>
+          <p>Here dataset taken from <a href="https://bcmi.sjtu.edu.cn/home/seed/seed-v.html">
+    <span class="tag">SEED V Dataset</span>
+</a>
+    The SEED‑V dataset is a comprehensive collection of EEG recordings designed to facilitate research in emotion recognition. It encompasses data from 16 subjects who participated in sessions where they were exposed to emotionally evocative film clips. The dataset captures EEG signals across three emotional states: positive, neutral, and negative. Each subject's EEG data were recorded using a 62‑channel setup, providing rich spatial information about brain activity. The recordings were segmented into epochs corresponding to the different emotional stimuli, allowing for detailed analysis of neural responses to emotional content. This dataset serves as a valuable resource for developing and testing machine learning models aimed at classifying emotional states based on EEG signals.
+The total project code you will get here easily.
+ <a href="https://github.com/Sifatkhan-1915020/transformer_projects/tree/main/EEG-SEED-V">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
+        </div>
+
+<!---ML4-->
+  <div class="card col-3">
+          <div class="thumb"><img src="skin_lession.png" alt="Skin lession"></div>
+          <div class="badge">Medical Image Segmentation</div>
+          <h4> Skin Lession Segmentation </h4>
+          <p>Here dataset taken from <a href="https://www.kaggle.com/datasets/devdope/skin-lesion-dataset-using-segmentation">
+    <span class="tag">Skin Lesion Dataset</span>
+</a>
+<br>
+    ✅ Skin Lession Dataset Importing <br>
+    ✅ Image Preprocessing <br>
+    ✅ Generate Mask for segmentation purpose manually <br>
+    ✅ Apply UNET and deeplabV3 model for segmentation purpose <br>
+    ✅ Get a moderate segmentation result (not clinical standard) <br>
+The total project code you will get here easily. <br>
+ <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/skin_lession_detection.ipynb">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
+        </div>
+
+<!---ML5-->
+<div class="card col-3">
+          <div class="thumb"><img src="sentiment.jpg" alt="Sentiment Analysis"></div>
           <div class="badge">NLP</div>
-          <h4>Clinical note summarizer</h4>
-          <p>Abstractive summaries optimized for readability and clinician feedback loops.</p>
+          <h4> Sentiment Analysis from Finacial Statement</h4>
+          <p>Here dataset taken from <a href="https://www.kaggle.com/datasets/sbhatti/financial-sentiment-analysis">
+    <span class="tag">Dataset</span>
+</a>
+<br>
+    ✅ It's two datasets (FiQA, Financial PhraseBank) combined into one easy-to-use CSV file <br>
+    ✅ It provides financial sentences with sentiment labels.<br>
+    ✅ Apply Transformer based pretrained model finbert <br>
+    ✅ Evaluate the model, around 81% accuracy has been achieved<br>
+    
+The total project code you will get here easily. <br>
+ <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/financial_sentiment_analysis.ipynb">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
         </div>
-        <div class="card col-3">
-          <div class="badge">Signal</div>
-          <h4>ECG anomaly detection</h4>
-          <p>Self‑supervised features, robust thresholds, and on‑device deployment.</p>
+
+<!---ML6-->
+  
+   <div class="card col-3">
+          <div class="thumb"><img src="food selection.png" alt="Snacks Classification"></div>
+          <div class="badge">Computer Vision</div>
+          <h4> Snacks Classification Using Vision Image Transformer Model</h4>
+          <p>Here dataset taken from <a href="https://huggingface.co/datasets/Matthijs/snacks">
+    <span class="tag">Dataset</span>
+</a>
+<br>
+    ✅ This is a dataset of 20 different types of snack foods<br>
+    ✅ The images were taken from the Google Open Images dataset, release 2017_11. <br>
+    ✅ Apply ViT for classification purpose <br>
+    ✅ Get accuracy around 98.40% <br>
+    
+The total project code you will get here easily. <br>
+ <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/vit-implementation.ipynb">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
         </div>
-        <div class="card col-3">
-          <div class="badge">Ops</div>
-          <h4>ML evaluation suite</h4>
-          <p>Fairness, drift, and SVM kernel analysis visualized in a single toolkit.</p>
+
+<!---ML7-->
+
+<div class="card col-3">
+          <div class="thumb"><img src="ASD_img.png" alt="ASD Classification"></div>
+          <div class="badge">Computer Vision in Healthcare</div>
+          <h4> Atrial Septal Defect Classification Using ViT from echocardiogram image </h4>
+          <p>Here dataset taken from <a href="https://www.kaggle.com/datasets/xiaoweixumedicalai/abnormcardiacechovideos/data">
+    <span class="tag">Dataset</span>
+</a>
+<br>
+    
+    ✅ Standardized apical four-chamber (A4C) echocardiogram videos </br>
+    ✅ 243 ASD cases annotated and diagnosed by experienced physicians </br>
+    
+    ✅ Includes pixel-level annotations for LV, RV, LA, and RA (5 frames per video) </br>
+    ✅ Apply ViT for classification purpose <br>
+    ✅ Get accuracy around 94.00% <br>    
+    
+The total project code you will get here easily. <br>
+ <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/asd-vit.ipynb">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
         </div>
-      </div>
+
+<!---ML8-->
+
+<div class="card col-3">
+          <div class="thumb"><img src="PAH_image.png" alt="PAH Classification"></div>
+          <div class="badge">Computer Vision in Healthcare</div>
+          <h4> Pulmonary Arterial Hypertension3 Classification Using ViT from echocardiogram image </h4>
+          <p>Here dataset taken from <a href="https://www.kaggle.com/datasets/xiaoweixumedicalai/abnormcardiacechovideos/data">
+    <span class="tag">Dataset</span>
+</a>
+<br>
+    
+    
+    ✅ Standardized apical four-chamber (A4C) echocardiogram videos<br>
+    ✅ 507 PAH cases with diagnoses confirmed by Right Heart Catheterization<br>
+    
+    ✅ Includes pixel-level annotations for LV, RV, LA, and RA (5 frames per video)<br> 
+    ✅ Apply ViT for classification purpose <br>
+    ✅ Get accuracy around 98.00% <br>
+
+    
+The total project code you will get here easily. <br>
+ <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/pah-vit.ipynb">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
+        </div>
+
+
+<!---ML9-->
+    
+<div class="card col-3">
+          <div class="thumb"><img src="cig_peaky.png" alt="Cig Classification"></div>
+          <div class="badge">Computer Vision </div>
+          <h4> Smoking person Classification Using ViT from image </h4>
+          <p>Here dataset taken from <a href="https://www.mdpi.com/1424-8220/22/3/892">
+    <span class="tag">Dataset</span>
+</a>
+<br>
+✅ Dataset contains 1120 images equally divided into Smoking (560) and NotSmoking (560) classes<br>
+✅ Images were collected using multiple keywords from various search engines<br>
+✅ Includes diverse poses and gestures to create inter-class confusion (e.g., coughing, drinking water, phone use)<br>
+✅ All images are preprocessed and resized to 250×250 resolution<br>
+✅ Dataset split: 80% for training & validation and 20% for testing, suitable for deep learning–based smoker detection<br>
+    
+The total project code you will get here easily. <br>
+ <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/smoking-classify-vit%20(1).ipynb">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
+        </div>
+
+<!---ML10-->
+<div class="card col-3">
+          <div class="thumb"><img src="MWI_image.png" alt="Breast tumor Classification"></div>
+          <div class="badge">Microwave Imaging </div>
+          <h4> Microwave imaging Based Breast Tumor Radius Estimation</h4>
+          <p>Here dataset taken from <a href="https://www.kaggle.com/code/sifatkhanxd/notebookb26efe9f85/edit">
+    <span class="tag">Dataset</span>
+</a>
+<br>
+✅ Dataset constructed by generating Microwave image of breast from microstrip patch antenna<br>
+✅ Dataset constructed for 0,1,5,9,13,17,20 mm tumor radius for various type of antenna<br>
+✅ FeatureExtractor{ViT, Densenet121, efficientnet_b0, resnet50 }--> Estimator{SVM kernel}<br>
+
+The total project code you will get here easily. <br>
+ <a href="https://www.kaggle.com/code/sifatkhanxd/notebookb26efe9f85">
+    <span class="tag">Code and Result</span>
+</a>
+</p>
+        
     </div>
   </section>
 
   <!-- Instrumentation Projects -->
+  
+
+
   <section id="instrumentation">
     <div class="container reveal">
       <h3 class="section-title">Instrumentation projects</h3>
       <p class="section-sub">From sensors to systems — practical, reliable builds.</p>
-      <div class="grid">
-        <div class="card col-3">
-          <h4>Patient vitals monitor</h4>
-          <p>IoT telemetry, secure data channels, and clean bedside UI.</p>
-        </div>
-        <div class="card col-3">
-          <h4>Smart imaging phantom</h4>
-          <p>Repeatable calibration object for microwave imaging experiments.</p>
-        </div>
-        <div class="card col-3">
-          <h4>Wearable posture tracker</h4>
-          <p>Low‑power IMU device with adaptive sampling and BLE sync.</p>
-        </div>
-        <div class="card col-3">
-          <h4>Lab automation scripts</h4>
-          <p>Python + microcontrollers to streamline testing workflows.</p>
-        </div>
+      <div class="grid" >
+              <!---IP1-->
+     <div class="card col-3" style=" border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="ip1_1.png" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="ip1_2.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="ip1_3.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;">&#10094;</button>
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Healthcare Automation</div>
+  <h4> Blood Back Flow Prevention in IV Setup</h4>
+  <p>
+    you can download the project report from 
+    <a href="32_project_report.pdf" download="Blood_Back_Flow_Prevention_Project.pdf" 
+   style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+   📄 Download PDF
+    </a>
+
+    
+    <br>
+    ✅ Dataset constructed by generating Microwave image of breast from microstrip patch antenna<br>
+    ✅ Dataset constructed for 0,1,5,9,13,17,20 mm tumor radius for various type of antenna<br>
+    ✅ FeatureExtractor {ViT, Densenet121, efficientnet_b0, resnet50} → Estimator {SVM kernel}<br>
+    The total project code you will get here easily.<br>
+    <a href="https://www.kaggle.com/code/sifatkhanxd/notebookb26efe9f85">
+      <span class="tag">Code and Result</span>
+    </a>
+  </p>
+</div>
+
+<script>
+let currentIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
+
+function showSlide(index) {
+  if (index >= slides.length) currentIndex = 0;
+  else if (index < 0) currentIndex = slides.length - 1;
+  else currentIndex = index;
+  
+  slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+document.querySelector(".next").addEventListener("click", () => showSlide(currentIndex + 1));
+document.querySelector(".prev").addEventListener("click", () => showSlide(currentIndex - 1));
+</script>
+
+
+        
       </div>
     </div>
   </section>
