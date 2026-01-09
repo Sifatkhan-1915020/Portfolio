@@ -577,10 +577,10 @@ The total project code you will get here easily. <br>
         <img src="ip1_1.png" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
       </div>
       <div class="slide" style="min-width:100%;">
-        <img src="ip1_2.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+        <img src="IP1_2.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
       </div>
       <div class="slide" style="min-width:100%;">
-        <img src="ip1_3.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+        <img src="IP1_3.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
       </div>
     </div>
     <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;">&#10094;</button>
@@ -599,13 +599,16 @@ The total project code you will get here easily. <br>
 
     
     <br>
-    ✅ Dataset constructed by generating Microwave image of breast from microstrip patch antenna<br>
-    ✅ Dataset constructed for 0,1,5,9,13,17,20 mm tumor radius for various type of antenna<br>
-    ✅ FeatureExtractor {ViT, Densenet121, efficientnet_b0, resnet50} → Estimator {SVM kernel}<br>
-    The total project code you will get here easily.<br>
-    <a href="https://www.kaggle.com/code/sifatkhanxd/notebookb26efe9f85">
-      <span class="tag">Code and Result</span>
-    </a>
+    ✅ When saline bag (IV bag) becomes empty blood back flow in the IV pipe<br>
+    ✅ Here use load cell to calculate the weight of the saline bag<br>
+    ✅ When its become empty then the solenoidal valve is activated to prevent back flow of blood<br>
+    ✅ Everything is controlled by Arduino Uno<br>
+    ✅ IoT based monitoring system has been developed using Blynk app<br>
+    ✅ Here also LED & LDR system has been used to detect the air bubble in the IV pipe<br>
+    ✅ Load cell-solenoidal valve system is calibrated properly for accurate operation<br>
+    ✅ Load cell-solenoidal valve system provides around 98% accuracy <br>
+    ✅ Bubble detection must be more optimized and calibrated for better result <br>
+    
   </p>
 </div>
 
@@ -626,8 +629,326 @@ document.querySelector(".next").addEventListener("click", () => showSlide(curren
 document.querySelector(".prev").addEventListener("click", () => showSlide(currentIndex - 1));
 </script>
 
+    <!---IP2-->
+     <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider1" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_1.png" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_2.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_3.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_4.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_5.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_6.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+    <!-- Inline JS in buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex1=(currentIndex1<=0?slides1.length-1:currentIndex1-1);document.getElementById('slider1').style.transform='translateX(-'+(currentIndex1*100)+'%)';">&#10094;</button>
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex1=(currentIndex1>=slides1.length-1?0:currentIndex1+1);document.getElementById('slider1').style.transform='translateX(-'+(currentIndex1*100)+'%)';">&#10095;</button>
+  </div>
 
+  <!-- Text Section -->
+  <div class="badge">Healthcare Assistance</div>
+  <h4>Diatracker: A Multimodal Diabetes Assistance Device</h4>
+  <p>
+    you can download the project report from 
+    <a href="diatracker.pdf" download="Diatracker_Project_Report.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+    ✅ Provide autmatic/semiautomatic insulin infusion system & app control insulin infusion system<br>
+    ✅ Provide noninvasive blood glucose monitoring system<br>
+    ✅ Provide noninvasive cholesterol monitoring system<br>
+    ✅ Provide noninvasive cholesterol monitoring system<br>
+    ✅ Provide assistance app for AI based diabetic foot ulcer detection<br>
+    ✅ Provide real time monitoring system<br>
+    ✅ Using Esp32, Servo-motor, syringe<br>
+    ✅ IoT based monitoring system has been developed using Blynk app<br>
+    ✅ Webapp designed using HTML, CSS, JavaScript, Flask(backend)<br>
+    ✅ Noninvasive blood glucose & cholesterol monitoring system done by estimation model from real lab data in KUET Medical Center<br>
+It is already published in IEEE Xplore. <br>
+    <a href="https://doi.org/10.1109/QPAIN66474.2025.11172255">
+        <span class="tag">IEEE Xplore Link</span> </a>
+  </p>
+</div>
+
+<script>
+  // initialize variables once
+  let currentIndex1 = 0;
+  const slides1 = document.querySelectorAll("#slider1 .slide");
+</script>
         
+<!---IP3-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider2" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="airbender_1.jpg" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="airbender_2.jpeg" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="airbender_3.jpeg" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex2=(currentIndex2<=0?slides2.length-1:currentIndex2-1);document.getElementById('slider2').style.transform='translateX(-'+(currentIndex2*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex2=(currentIndex2>=slides2.length-1?0:currentIndex2+1);document.getElementById('slider2').style.transform='translateX(-'+(currentIndex2*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Lowcost Monitoring</div>
+  <h4>AirBender: Low Cost, Portable, Plug&play Air Quality Monitoring Device</h4>
+  <p>
+    you can download the project report from 
+    <a href="Team Airbenders_Project Ba-U.pdf" download="AirBender_Project_Report.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Collaborated with my team to develop a plug-and-play air quality monitoring device <br>
+✅ Responsible for circuit implementation and 3D design & printing <br>
+✅ Enabled user flexibility to select which air or gas parameters to monitor <br>
+✅ Achieved a well-executed and professionally 3D-printed implementation <br>
+✅ Monitoring performance is highly reliable and close to precise measurements <br>
+✅ Developed using Arduino, MQ gas sensors, and a novel plug-in enclosure design <br>
+✅ Implemented an IoT-based real-time monitoring system <br>
+✅ Validated results by comparing with commercially available air quality devices <br>
+✅ Awarded two technical competition wins for this project <br>
+
+    
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex2 = 0;
+  const slides2 = document.querySelectorAll("#slider2 .slide");
+</script>
+
+
+
+<!---IP3-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider3" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="RC_1.jpg" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+  <video src="RC_2.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+  <div class="slide" style="min-width:100%;">
+  <video src="RC_3.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:100%; object-fit:scale-down; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex3=(currentIndex3<=0?slides3.length-1:currentIndex3-1);document.getElementById('slider3').style.transform='translateX(-'+(currentIndex3*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex3=(currentIndex3>=slides3.length-1?0:currentIndex3+1);document.getElementById('slider3').style.transform='translateX(-'+(currentIndex3*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Remote controlling</div>
+  <h4>Remote Control Car for Medical Purpose</h4>
+  <p>
+    you can download the project report from 
+    <a href="robo nurse assist.pdf" download="robo_nurse_assist.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Collaborated with my team to develop a plug-and-play air quality monitoring device <br>
+✅ Responsible for circuit implementation and 3D design & printing <br>
+✅ Enabled user flexibility to select which air or gas parameters to monitor <br>
+✅ Achieved a well-executed and professionally 3D-printed implementation <br>
+✅ Monitoring performance is highly reliable and close to precise measurements <br>
+✅ Developed using Arduino, MQ gas sensors, and a novel plug-in enclosure design <br>
+✅ Implemented an IoT-based real-time monitoring system <br>
+✅ Validated results by comparing with commercially available air quality devices <br>
+✅ Awarded two technical competition wins for this project <br>
+
+    
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex3 = 0;
+  const slides3 = document.querySelectorAll("#slider3 .slide");
+</script>
+
+
+
+<!---IP5-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider4" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="heart_2.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+     <div class="slide" style="min-width:100%;">
+        <img src="heart_3.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="heart_4.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="heart_1.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+
+ 
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex4=(currentIndex4<=0?slides4.length-1:currentIndex4-1);document.getElementById('slider4').style.transform='translateX(-'+(currentIndex4*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex4=(currentIndex4>=slides4.length-1?0:currentIndex4+1);document.getElementById('slider4').style.transform='translateX(-'+(currentIndex4*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Telemedicine Monitoring</div>
+  <h4>Telemedicine for Real Time ECG Monitoring</h4>
+  <p>
+    you can download the project report from 
+    <a href="heart_care.pdf" download="heart_care.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Developed an embedded system project where ECG is continuously monitored through a mobile application <br>
+✅ Used the AD8232 ECG module, integrated with Arduino Uno and a Wi-Fi module for real-time data transmission <br>
+✅ In the team, my role focused on ECG circuit implementation and mobile app development <br>
+
+✅ Snapshot of the app: <img src="heart_3.jpeg" alt="ECG Monitoring" style="width:100%; height:70%; object-fit:contain; display:block;"><br>
+
+You can download the app apk file from this link. <br>
+    <a href="https://github.com/Sifatkhan-1915020/MIT_App_Inventor_Project/blob/main/Smart_Ward.apk">
+        <span class="tag">App apk </span> </a>
+
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex4 = 0;
+  const slides4 = document.querySelectorAll("#slider4 .slide");
+</script>
+
+
+<!---IP6-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+      <div id="slider5" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="hr_1.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+     <div class="slide" style="min-width:100%;">
+        <img src="hr_2.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="hr_0.png" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+       <div class="slide" style="min-width:100%;">
+  <video src="hr_3.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:70%; object-fit:contain; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+ 
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex5=(currentIndex5<=0?slides5.length-1:currentIndex5-1);document.getElementById('slider5').style.transform='translateX(-'+(currentIndex5*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex5=(currentIndex5>=slides5.length-1?0:currentIndex5+1);document.getElementById('slider5').style.transform='translateX(-'+(currentIndex5*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge"> Healthcare Monitoring</div>
+  <h4>Real-Time Non-invasive Heart Rate Monitoring</h4>
+  <p>
+    you can download the project report from 
+    <a href="hr.pdf" download="heart_rate.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Non-invasive heart rate monitoring is day by day becoming popular <br>
+✅ We provide low cost heart rate monitoring solutions in this project<br>
+✅ LED-Phototransistor based system is designed and Implemented<br>
+✅ Snapshot of the circuit is : <img src="hr_0.png" alt="ECG Monitoring" style="width:100%; height:300%; object-fit:contain; display:block;"><br>
+
+
+
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex5 = 0;
+  const slides5 = document.querySelectorAll("#slider5 .slide");
+</script>
+
+
+
+
+
+
       </div>
     </div>
   </section>
