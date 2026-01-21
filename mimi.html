@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sifat — Engineering Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* --- CSS VARIABLES & THEMES --- */
+    :root {
+      /* Dark Theme (Default) */
+      --bg-deep: #030712;
+      --bg-card: linear-gradient(180deg, rgba(20, 25, 45, 0.6), rgba(15, 20, 35, 0.4));
+      --primary: #38bdf8;       /* Sky Blue */
+      --secondary: #c084fc;     /* Electric Purple */
+      --accent: #2dd4bf;        /* Teal */
+      --glass-bg: rgba(17, 24, 39, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --glow: 0 0 20px rgba(56, 189, 248, 0.15);
+      --radius: 20px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    [data-theme="light"] {
+      /* Light Theme Overrides */
+      --bg-deep: #f8fafc;
+      --bg-card: linear-gradient(180deg, #ffffff, #f1f5f9);
+      --primary: #0284c7;       /* Darker Blue */
+      --secondary: #9333ea;     /* Darker Purple */
+      --accent: #0d9488;        /* Darker Teal */
+      --glass-bg: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(0, 0, 0, 0.08);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --glow: 0 0 15px rgba(2, 132, 199, 0.2);
+    }
+
+    /* --- Reset & Base --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background-color: var(--bg-deep);
+      /* Subtle gradient overlay */
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(124, 58, 237, 0.08), transparent 25%), 
+        radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.08), transparent 25%);
+      background-attachment: fixed;
+      background-size: cover;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    h1, h2, h3, h4, h5, .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; padding-left: 20px; }
+    ul li { margin-bottom: 8px; position: relative; }
+    ul li::before {
+      content: "▹"; color: var(--accent); position: absolute; left: -20px;
+    }
+
+    /* --- Layout Utilities --- */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 100px 0; position: relative; }
+
+    /* --- Navbar --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: background 0.5s ease;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      z-index: 1002;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+
+    .links { display: flex; gap: 32px; align-items: center; }
+    .links a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); position: relative; }
+    .links a:hover { color: var(--primary); }
+    
+    /* Theme Toggle Button */
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+      z-index: 1002;
+    }
+    .theme-toggle:hover {
+      background: rgba(125, 125, 125, 0.1);
+      transform: rotate(15deg);
+    }
+
+    .hamburger { display: none; flex-direction: column; cursor: pointer; z-index: 1002; gap: 6px; }
+    .bar { width: 28px; height: 2px; background: var(--text-main); transition: var(--transition); }
+
+    /* --- Hero Section --- */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+    
+    .intro-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1; margin-bottom: 24px;
+      background: linear-gradient(to right, var(--text-main), var(--text-muted));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    
+    .intro-content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; max-width: 600px; }
+
+    /* Buttons */
+    .btn-group { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 20px; border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+      cursor: pointer; position: relative; overflow: hidden; z-index: 1; border: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary { background: var(--text-main); color: var(--bg-deep); }
+    .btn-primary:hover { color: #fff; background: var(--primary); box-shadow: var(--glow); }
+    .btn-outline { background: transparent; border: 1px solid var(--glass-border); color: var(--text-main); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-sm { padding: 6px 14px; font-size: 0.8rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+    .tag {
+      font-size: 0.75rem; text-transform: uppercase; padding: 6px 14px;
+      border-radius: 100px; background: rgba(56, 189, 248, 0.1);
+      color: var(--primary); border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 600;
+    }
+
+    .profile-frame {
+      position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 1/1.1;
+      box-shadow: var(--shadow-card); border: 1px solid var(--glass-border);
+    }
+    .profile-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .profile-frame:hover img { transform: scale(1.05); }
+
+    /* --- General Sections --- */
+    .section-header { margin-bottom: 60px; }
+    .section-title {
+      font-size: 2.5rem; margin-bottom: 16px; display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--text-muted); }
+
+    /* --- Grid & Cards --- */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+    
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border); border-radius: var(--radius);
+      padding: 24px; height: 100%; display: flex; flex-direction: column;
+      transition: var(--transition); position: relative; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.3); box-shadow: var(--shadow-card); }
+
+    .thumb { width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    
+    .card h4 { font-size: 1.25rem; margin-bottom: 10px; color: var(--text-main); margin-top: 10px; }
+    .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; flex-grow: 1; }
+    .card ul { margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted); }
+    
+    /* --- Education Specific Styles --- */
+    .edu-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .edu-logo-wrapper {
+      width: 60px;
+      height: 60px;
+      min-width: 60px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .edu-logo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .edu-info {
+      flex: 1;
+    }
+    .edu-info h4 { margin: 0; margin-bottom: 5px; font-size: 1.15rem; }
+
+    /* General Badges */
+    .badge {
+      display: inline-block; background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;
+    }
+    /* Specific 3D Badges */
+    .badge-sw { background: #d63031; color: white; border: 1px solid #ff7675; }
+    .badge-bl { background: #e67e22; color: white; border: 1px solid #f39c12; }
+    
+    .project-link { margin-top: auto; display: inline-flex; align-items: center; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+    .project-link:hover { text-decoration: underline; }
+
+    /* --- Standard Image Slider --- */
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/10;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .slides { display: flex; height: 100%; transition: transform 0.5s ease-in-out; }
+    .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #000; }
+    .slide img, .slide video { width: 100%; height: 100%; object-fit: contain; }
+
+    .slider-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5); color: #fff; border: none;
+      width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+      z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.3s;
+    }
+    .slider-btn:hover { background: var(--primary); color: #000; }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* --- 3D CINEMA MODE STYLES --- */
+    .cinema-card {
+      grid-column: span 12;
+      background: #000;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cinema-slider-wrapper { position: relative; width: 100%; height: 650px; overflow: hidden; }
+    .cinema-slide { min-width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; background: #050505; }
+
+    .caption-overlay {
+      position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
+      color: #fff; z-index: 5; text-align: center;
+    }
+    .caption-overlay h4 { font-size: 1.8rem; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); color: #fff; }
+    .caption-overlay p { color: #ccc; font-size: 1.1rem; }
+
+    /* --- ACHIEVEMENT / CINEMATOGRAPHY GRID STYLES --- */
+    .cine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+    .cine-item {
+      position: relative; border-radius: 12px; overflow: hidden;
+      aspect-ratio: 16/9; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer;
+    }
+    .cine-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; filter: contrast(1.1) saturate(1.1); }
+    .cine-item:hover img { transform: scale(1.15); }
+
+    .cine-caption {
+      position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
+      background: linear-gradient(to top, rgba(0,0,0,1), transparent);
+      opacity: 0; transform: translateY(20px); transition: all 0.5s ease;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .cine-item:hover .cine-caption { opacity: 1; transform: translateY(0); }
+    .cine-caption h5 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; font-weight: 600; letter-spacing: 0.5px; }
+    .cine-caption h6 { font-size: 1rem; color: #eee; margin-bottom: 5px; font-weight: 400; }
+    .cine-caption span { font-size: 0.9rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* --- FLOATING ACTION BUTTONS --- */
+    .floating-controls {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 15px;
+      z-index: 2000;
+    }
+
+    /* CV Button Style */
+    .cv-btn-float {
+      display: flex;
+      align-items: center;
+      gap: 1px;
+      padding: 1px 1px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-weight: 600;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .cv-btn-float:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      color: #fff;
+    }
+
+    .control-btn {
+      width: 50px; height: 50px; border-radius: 50%; border: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+      color: white;
+    }
+    .control-btn:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+    .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
+    
+    .scroll-btn {
+      background: var(--text-main); color: var(--bg-deep);
+      opacity: 0; visibility: hidden; transform: translateY(20px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    }
+    .scroll-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .scroll-btn:hover { transform: translateY(-3px) scale(1.1); }
+     
+     /* 1. The Container for Desktop */
+    .button-container {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        align-items: center;
+    }
+
+    /* 2. Contact Button (Always stays in place) */
+    .btn-contact {
+        text-decoration: none;
+        padding: 5px 5px;
+        border-radius: 30px;
+        background-color: #f3f4f6;
+        color: #333;
+        border: 1px solid #ccc;
+        font-family: sans-serif;
+        font-weight: 600;
+        transition: background 0.2s;
+    }
+
+    /* 3. AI Button (Desktop State) */
+    .btn-ai {
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #667eea, #764ba2); /* Nice Purple Gradient */
+        color: white;
+        font-family: sans-serif;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.2s;
+    }
+
+    .meai-floating-container {
+    position: fixed;
+    bottom: 100px; /* Adjust as needed to sit above the CV button */
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .meai-floating-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6b73ff, #000dff); /* Match your site's theme */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+  }
+
+  .meai-floating-button:hover {
+    transform: scale(1.1);
+  }
+
+  .meai-floating-label {
+    margin-top: 8px;
+    font-size: 12px;
+    color: white; /* Or a contrasting color that fits your theme */
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* --- Base Styles (Desktop & General) --- */
+.glass-btn {
+    text-decoration: none;
+    display: inline-block;
+    
+    /* Standard Desktop Sizing */
+    padding: 12px 35px;
+    font-size: 16px;
+    border-radius: 50px;
+    
+    /* THE POSH BLUE GRADIENT */
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(0, 168, 255, 0.2)
+    );
+    
+    /* The Blur Magic */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Borders & Depth */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    
+    /* Shadows */
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.2), 
+        inset 0 0 0 0.5px rgba(255, 255, 255, 0.1); 
+
+    /* Typography */
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    
+    /* Smooth Transitions */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Important for Android: Prevents blue highlight on tap */
+    -webkit-tap-highlight-color: transparent; 
+}
+
+/* --- Desktop Hover Effects --- */
+/* (Only works on devices that have a mouse cursor) */
+@media (hover: hover) {
+    .glass-btn:hover {
+        background: linear-gradient(
+            135deg, 
+            rgba(255, 255, 255, 0.2), 
+            rgba(0, 168, 255, 0.5)
+        );
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 
+            0 15px 40px rgba(0, 168, 255, 0.4), 
+            inset 0 0 10px rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* --- ANDROID / MOBILE VERSION --- */
+/* Triggers on screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    .glass-btn {
+        /* Smaller Sizing for Mobile */
+        padding: 10px 24px; 
+        font-size: 13px;    
+        letter-spacing: 1px; /* Tighter text */
+        
+        /* Reduce blur slightly for better mobile performance */
+        backdrop-filter: blur(8px); 
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Stronger Feedback when Tapping on Android */
+    .glass-btn:active {
+        background: rgba(0, 168, 255, 0.4); /* Flash blue on tap */
+        transform: scale(0.95); /* Shrinks visibly */
+        box-shadow: 0 2px 10px rgba(0, 168, 255, 0.2);
+    }
+}
+  
+    /* 4. MAGIC: Mobile / Android Behavior */
+    @media (max-width: 768px) {
+        .btn-ai {
+            position: fixed;          /* Detach from the page */
+            bottom: 25px;             /* Stick to bottom */
+            right: 20px;              /* Stick to right */
+            z-index: 9999;            /* Float above everything */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* Big shadow to pop out */
+            padding: 15px 30px;       /* Bigger touch area for thumbs */
+            font-size: 1.1rem;        /* Easier to read */
+            border: 2px solid white;  /* White border to separate from background */
+            animation: floatBounce 3s ease-in-out infinite; /* Gentle bounce */
+        }
+
+        /* Add a spacer so content isn't hidden behind the floating button */
+        .btn-ai::after {
+            content: '';
+            display: block;
+            height: 60px;
+        }
+
+        /* Gentle Bounce Animation */
+        @keyframes floatBounce {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+    }
+
+    /* --- Footer --- */
+    footer { background: #010205; border-top: 1px solid var(--glass-border); padding: 60px 0 30px; text-align: center; }
+    .foot-links a { color: var(--text-muted); margin: 0 10px; }
+    .foot-links a:hover { color: var(--primary); }
+
+    /* --- Animations --- */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) { .col-4 { grid-column: span 6; } }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .links {
+        position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+        background: var(--bg-deep); border-left: 1px solid var(--glass-border);
+        flex-direction: column; justify-content: center; gap: 20px; transition: 0.4s ease;
+      }
+      .links.active { right: 0; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .intro-content p { margin: 0 auto 30px; }
+      .btn-group { justify-content: center; }
+      .tags { justify-content: center; }
+      .col-4, .col-6 { grid-column: span 12; }
+      .section-title { font-size: 2rem; }
+      section { padding: 60px 0; }
+      .profile-frame { max-width: 350px; margin: 0 auto; }
+      
+      .floating-controls { bottom: 20px; right: 20px; }
+      .cv-btn-float span { display: none; } /* Hide text on very small screens if needed, or keep it */
+      .cv-btn-float { padding: 12px; border-radius: 50%; width: 50px; height: 50px; justify-content: center; }
+      .cv-btn-float::after { content: "CV"; font-size: 0.8rem; }
+      
+      .cinema-slider-wrapper { height: 400px; }
+      .cine-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* Show text again on slightly larger mobile */
+    @media (min-width: 480px) {
+      .cv-btn-float { width: auto; height: auto; border-radius: 50px; padding: 12px 24px; }
+      .cv-btn-float span { display: inline; }
+      .cv-btn-float::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">SIFAT<span style="color:var(--primary)">.</span></a>
+      
+      <div class="nav-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+             <circle cx="12" cy="12" r="5"></circle>
+             <line x1="12" y1="1" x2="12" y2="3"></line>
+             <line x1="12" y1="21" x2="12" y2="23"></line>
+             <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+             <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+             <line x1="1" y1="12" x2="3" y2="12"></line>
+             <line x1="21" y1="12" x2="23" y2="12"></line>
+             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+      </div>
+
+       <nav class="links" id="nav-links" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: right; 
+    align-items: right ;
+    gap: 10px 25px; 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 10px;
+">
+    <a href="#intro" style="white-space: nowrap;">Intro</a>
+    <a href="#skills" style="white-space: nowrap;">My Skills</a>
+    <a href="#education" style="white-space: nowrap;">Education</a>
+    <a href="#experience" style="white-space: nowrap;">Experience</a>
+    <a href="#club-experience" style="white-space: nowrap;">Organizational Experience</a>
+    <a href="#ml" style="white-space: nowrap;">ML Projects</a>
+    <a href="#web" style="white-space: nowrap;">Web Dev</a>
+    <a href="#instrumentation" style="white-space: nowrap;">Instrumentation</a>
+    <a href="#simulation" style="white-space: nowrap;">Simulation</a>
+    <a href="#office" style="white-space: nowrap;">MS Office Projects</a>
+    <a href="#design" style="white-space: nowrap;">3D Design</a>
+    <a href="#graphic-design" style="white-space: nowrap;">Graphic Design</a>
+    <a href="#publication" style="white-space: nowrap;">Publication</a>
+    <a href="#cine" style="white-space: nowrap;">Achievements</a>
+    <a href="#contact" style="white-space: nowrap;">Contact</a>
+</nav>
+    </div>
+  </header>
+
+  <section id="intro" class="hero">
+    <div class="container hero-grid">
+      <div class="intro-content reveal">
+        <h1>Engineer<br> Researcher <br> Professional</h1>
+        <p><h2><b>I'm K. M. Sifat,</b></h2> A Biomedical Engineer focused on healthcare AI, ML, and NLP-driven research and product development. 
+          Experienced in 3D design, PCB design, and web-based systems, with 20+ technical projects, 10+ innovation competitions, and multiple awards. 
+          Strong in leadership, project management, mentoring, and cross-functional teamwork, seeking high-impact roles in research, 
+          R&D, startups, and corporate healthcare innovation.</p>
+        <div class="tags">
+          <span class="tag">Biomedical Engineering</span>
+          <span class="tag">ML in Healthcare</span>
+          <span class="tag">NLP in Healthcare</span>
+          <span class="tag">Data Science</span>
+          <span class="tag">System Development</span>
+          <span class="tag">PCB Design</span>
+          <span class="tag">3D Design</span>
+          <span class="tag">Leadership</span>
+        </div>
+        <div class="button-container">
+    <a href="#contact" class="glass-btn">
+        📩 Contact Me
+    </a>
+
+    
+</div>
+
+
+      </div>
+      <div class="profile-frame reveal">
+        <img src="me1 (2).jpg" alt="Sifat Portrait" />
+      </div>
+    </div>
+  </section>
+  
+  <section id="skills" style="padding: 60px 0;">
+  <div class="container reveal">
+    <div class="section-header" style="margin-bottom: 30px;">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-sub">Compact overview of technical proficiency.</p>
+    </div>
+
+    <div class="grid">
+      
+      <div class="card col-4" style="gap: 20px;">
+        <div>
+          <h5 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px;">Programming</h5>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Python <span style="color:var(--primary); font-size:0.7em;">★ ADV</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">Matlab <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+             <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">Simulink <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--glass-border); color: var(--text-muted);">C++</span>
+          </div>
+        </div>
+
+        <div style="width: 100%; height: 1px; background: var(--glass-border);"></div>
+
+        <div>
+          <h5 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px;">Frameworks & DB</h5>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Flask <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">MongoDB <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--glass-border); color: var(--text-muted);">FastAPI</span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--glass-border); color: var(--text-muted);">Node.js</span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--glass-border); color: var(--text-muted);">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-4" style="gap: 20px;">
+        <div>
+          <h5 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px;">AI & Intelligence</h5>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Machine Learning <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Deep Learning <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Transformers <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">RAG Pipeline <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+             <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--glass-border); color: var(--text-muted);">NLP</span>
+          </div>
+        </div>
+
+        <div style="width: 100%; height: 1px; background: var(--glass-border);"></div>
+
+        <div>
+          <h5 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px;">Simulation & 3D</h5>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Blender <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">SolidWorks <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">Comsol <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">CST <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--glass-border); color: var(--text-muted);">Material Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-4" style="gap: 20px;">
+        <div>
+          <h5 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px;">Creative Studio</h5>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Premier Pro <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); color: var(--text-main); font-weight: 500;">Canva <span style="color:var(--primary); font-size:0.7em;">★</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">Inshot <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">Capcut <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+            <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--glass-border); color: var(--text-muted);">Photoshop</span>
+          </div>
+        </div>
+
+        <div style="width: 100%; height: 1px; background: var(--glass-border);"></div>
+
+        <div>
+          <h5 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px;">Office Suite</h5>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+             <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">MS Word <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+             <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">MS Excel <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+             <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">PowerPoint <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+             <span style="font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: rgba(192, 132, 252, 0.1); border: 1px solid var(--secondary); color: var(--text-main);">Access DB <span style="color:var(--secondary); font-size:0.7em;">INT</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <section id="education">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+        <p class="section-sub">Academic foundations and certifications.</p>
+      </div>
+      <div class="grid">
+        
+        <div class="card col-4">
+          <div class="edu-header">
+            <div class="edu-logo-wrapper">
+              <img src="kuetlogo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/8/89/Khulna_University_of_Engineering_%26_Technology_Logo.svg/1200px-Khulna_University_of_Engineering_%26_Technology_Logo.svg.png'" alt="KUET Logo">
+            </div>
+            <div class="edu-info">
+              <div class="badge">B.Sc. in Biomedical Engineering</div>
+              <h4>KUET</h4>
+            </div>
+          </div>
+          <p>Result: CGPA 3.38 out of 4.00  
+Thesis Title: Breast Tumor Imaging Using Different Microstrip Patch Antenna 
+Configurations & Detecting Tumor Growth from the Reconstructed Images using 
+Deep learning Based Estimation Algorithm 
+Major Subjects: Biomedical Image & Signal Processing, Biostatistics, Biomedical 
+Instrumentation, Biosensor, Bio-photonics, Bioelectricity, Biomechanics, Hospital      
+Management, Economy, Engineering Mathematics. .</p>
+        </div>
+
+        <div class="card col-4">
+          <div class="edu-header">
+            <div class="edu-logo-wrapper">
+              <img src="bnpmclogo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2231/2231649.png'" alt="College Logo">
+            </div>
+            <div class="edu-info">
+              <div class="badge">HSC (Science)</div>
+              <h4>Bir Sreastha Noor Mohammad</h4>
+            </div>
+          </div>
+          <p>Group: Science 
+Result: GPA 5.00 out of 5.00 
+I was an active member in Science and Math club of my college. I represented my 
+institution in 2 Physics Olympiad, 1 Chemistry Olympiad, 3 inter-college science 
+Olympiads. </p>
+        </div>
+
+        <div class="card col-4">
+          <div class="edu-header">
+            <div class="edu-logo-wrapper">
+               <img src="coursera_logo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg'" alt="Coursera Logo">
+            </div>
+            <div class="edu-info">
+              <div class="badge">Certifications</div>
+              <h4>Coursera & Online</h4>
+            </div>
+          </div>
+          <ul>
+            <li>Bacterial Bioinformatics</li>
+            <li>Mathematics for ML</li>
+            <li>MLOps Specialization</li>
+            <li>Machine Learning</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Leadership, management, and community impact.</p>
+      </div>
+      <div class="grid">
+        <div class="card col-4">
+          <div class="thumb"><img src="Dinning Monitor.jpeg" alt="Dining Monitor"></div>
+          <h4>Dining Monitor</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">Dr. M. A Rashid Hall, KUET | 2024-2025</p>
+          <p>Oversaw dining operations ensuring quality and financial sustainability. Implemented accountability in purchasing and upgraded facilities.</p>
+        </div>
+        <div class="card col-4">
+          <div class="thumb"><img src="annual_feast.jpg" alt="Feast"></div>
+          <h4>Annual Feast Organizer</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">Jan 2025</p>
+          <p>Arranged annual feast for 500 residents of Hall. Negotiated vendors and coordinated food service logistics.</p>
+        </div>
+        <div class="card col-4">
+          <div class="thumb"><img src="teaching.jpg" alt="Teaching"></div>
+          <h4>Teaching & Mentoring</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">2019 - Present</p>
+          <p>Provided mentorship to 20+ high school students and private coaching centers in science fundamentals.</p>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  </section>
+
+
+<section id="club-experience">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Organizational Experience</h2>
+        <p class="section-sub">Learning, Leadership, management, and Networking.</p>
+      </div>
+      <div class="grid">
+        <div class="card col-4">
+          <div class="thumb"><img src="kuetradio.png" alt="Dining Monitor"></div>
+          <h4>Additional General Secretary (ex) </h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">KUET Radio</p>
+          <p>At KUET Radio (2020–2022), I spearheaded program design and served as a strategic liaison between senior and junior executives. I also drove growth through inter-club collaborations and cross-functional partnerships.
+          </p>
+        </div>
+        <div class="card col-4">
+          <div class="thumb"><img src="marsrover.png" alt="Feast"></div>
+          <h4>Junior Trainee</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">Control Subteam, KUET Mars Rover Team-Durbar</p>
+          <p>As a Control Subteam Trainee, I developed control systems for Mars Rover functionality.
+             I also specialized in technical visualization, using Blender to create high-fidelity simulations and animations
+              of the rover in Martian environments for the International Rover Challenge (IRC). I worked here from 2020 to 2022.</p>
+        </div>
+        <div class="card col-4">
+          <div class="thumb"><img src="hult.jpg" alt="Teaching"></div>
+          <h4>Volunteer</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">Hult Prize 2020 at KUET</p>
+          <p>Hult Prize Campus Volunteer: Driving student engagement and outreach for 
+            the world’s largest social entrepreneurship competition. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="ml">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Machine Learning</h2>
+        <p class="section-sub">Rigorous, explainable AI applied to complex datasets.</p>
+      </div>
+      <div class="grid">
+        <div class="card col-4">
+          <div class="thumb"><img src="result_ped_seg.png" alt="Echo Segmentation"></div>
+          <span class="badge">Medical Segmentation</span>
+          <h4>Pediatric Left Ventricle Segmentation</h4>
+          <p>Estimated ejection fraction using <b>DeepLabV3+</b>. Achieved IOU 0.89 (Train) / 0.84 (Test).</p>
+          <a href="https://github.com/Sifatkhan-1915020/medical-image-segmentation-/blob/main/echonet_pediatric.ipynb" class="project-link">Code & Results &rarr;</a>
+        </div>
+        <div class="card col-4">
+          <div class="thumb"><img src="EEG_CHB_MIT.png" alt="EEG"></div>
+          <span class="badge">Signal Processing</span>
+          <h4>EEG Preprocessing (CHB-MIT)</h4>
+          <p>Processed scalp EEG for drug-resistant epilepsy. Segmented epochs to distinguish seizure activity.</p>
+          <a href="https://github.com/Sifatkhan-1915020/CHb-MIT-EEG/tree/main/Preprocessing" class="project-link">View Pipeline &rarr;</a>
+        </div>
+        <div class="card col-4">
+          <div class="thumb"><img src="eeg_emotion.png" alt="Emotion AI"></div>
+          <span class="badge">Affective Computing</span>
+          <h4>EEG Emotion Classification</h4>
+          <p>Utilized SEED-V dataset (62 channels) to classify emotional states using advanced preprocessing.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/tree/main/EEG-SEED-V" class="project-link">View Project &rarr;</a>
+        </div>
+         <div class="card col-4">
+            <div class="thumb"><img src="skin_lession.png" alt="Skin Lesion"></div>
+            <span class="badge">Computer Vision</span>
+            <h4>Skin Lesion Segmentation</h4>
+            <p>Applied UNET and DeepLabV3 models on Skin Lesion Dataset. Includes manual mask generation.</p>
+            <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/skin_lession_detection.ipynb" class="project-link">View Notebook &rarr;</a>
+          </div>
+          <div class="card col-4">
+            <div class="thumb"><img src="sentiment.jpg" alt="FinBERT"></div>
+            <span class="badge">NLP</span>
+            <h4>Financial Sentiment Analysis</h4>
+            <p>Fine-tuned FinBERT on FiQA & Financial PhraseBank. Achieved ~81% accuracy.</p>
+            <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/financial_sentiment_analysis.ipynb" class="project-link">View Analysis &rarr;</a>
+          </div>
+          <div class="card col-4">
+            <div class="thumb"><img src="food selection.png" alt="Snacks ViT"></div>
+            <span class="badge">Vision Transformer</span>
+            <h4>Snack Classification with ViT</h4>
+            <p>Classified 20 types of snacks using Google Open Images dataset. ViT model achieved 98.40% accuracy.</p>
+            <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/vit-implementation.ipynb" class="project-link">View Implementation &rarr;</a>
+          </div>
+        
+        <div class="card col-4">
+          <div class="thumb"><img src="ASD_img.png" alt="ASD"></div>
+          <span class="badge">Cardiology AI</span>
+          <h4>Atrial Septal Defect (ASD) Classifier</h4>
+          <p>Utilized ViT on apical 4-chamber echocardiogram videos (243 cases). Achieved ~94.00% diagnostic accuracy.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/asd-vit.ipynb" class="project-link">View Code &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="PAH_image.png" alt="PAH"></div>
+          <span class="badge">Cardiology AI</span>
+          <h4>Pulmonary Arterial Hypertension</h4>
+          <p>Detecting PAH from 507 catheterization-confirmed cases using Video Transformers on echo frames. Accuracy: ~98%.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/pah-vit.ipynb" class="project-link">View Code &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="cig_peaky.png" alt="Smoking Detection"></div>
+          <span class="badge">Behavioral AI</span>
+          <h4>Smoker Detection</h4>
+          <p>Classified 1120 images (Smoking vs Not) with challenging poses and gestures using Vision Transformers.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/smoking-classify-vit%20(1).ipynb" class="project-link">View Code &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="MWI_image.png" alt="Microwave"></div>
+          <span class="badge">Microwave Imaging</span>
+          <h4>Breast Tumor Radius Estimation</h4>
+          <p>Microstrip antenna simulation data. Used ViT/ResNet50 feature extractors + SVM to estimate tumor size (0-20mm).</p>
+          <a href="https://www.kaggle.com/code/sifatkhanxd/notebookb26efe9f85" class="project-link">View Kaggle &rarr;</a>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!--Web-->
+  <section id="web">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Web Projects</h2>
+        <p class="section-sub">Full stack applications, responsive design, and dynamic interfaces.</p>
+      </div>
+      <div class="grid">
+        
+        <div class="card col-4">
+          <div class="thumb">
+            <img src="telemed_1.png" alt="Portfolio Web">
+          </div>
+          <span class="badge">Flask App </span>
+          <h4>Telemedicine App </h4>
+          <p>A responsive Flask-based healthcare platform designed to facilitate seamless real-time communication 
+            between patients and doctors via integrated chat and video conferencing. The application streamlines
+             the clinical workflow by enabling automated appointment scheduling and digital prescription management.
+          </p>
+          <a href="https://github.com/Sifatkhan-1915020/telemed_app" class="project-link">Project Code  &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb">
+            <img src="diatracker_web.png" alt="Dashboard">
+          </div>
+          <span class="badge">Flask App</span>
+          <h4>Diatracker App</h4>
+          <p>An advanced IoT-integrated web application designed for high-precision medical automation.   <br>The platform features a dynamic dashboard for real-time sensor data visualization and an IoT-based control system 
+            for a high-accuracy servo-driven syringe pump. This system ensures meticulous insulin delivery while facilitating
+             instantaneous data synchronization with healthcare providers for remote patient monitoring.
+          </p>
+          <a href="https://github.com/Sifatkhan-1915020/diatracker" class="project-link">Project Code &rarr;</a>
+        </div>
+
+        
+      
+        <div class="card col-4">
+          <div class="thumb">
+            <img src="arctic_1.png" alt="E-Commerce">
+          </div>
+          <span class="badge">fastAPI</span>
+          <h4>Arctic Nursing Home: A Telemedicine Based Nursing Home </h4>
+          <p>The platform serves as a virtualized nursing facility, leveraging telemedicine to bridge 
+            the connectivity gap between patients and healthcare providers.
+             While maintaining a strict protocol for in-person intervention during critical emergencies, 
+             the app functions as a high-velocity triage and consultation hub, ensuring immediate access 
+             to medical expertise for non-acute needs.
+          </p>
+          <a href="https://github.com/Sifatkhan-1915020/arctic-nursing-home-" class="project-link">Project Code &rarr;</a>
+        </div>
+
+         <div class="card col-4">
+          <div class="thumb">
+            <img src="emotion_1.png" alt="E-Commerce">
+          </div>
+          <span class="badge">Flask App</span>
+          <h4>Emotion Recognizer AI App </h4>
+          <p>
+    This application utilizes a <strong>Vision Transformer (ViT)</strong> architecture 
+    to classify human affect from static imagery. The model was trained using this 
+    <a href="https://www.kaggle.com/datasets/tapakah68/facial-emotion-recognition" 
+       style="display: inline-block; 
+              padding: 3px 14px; 
+              background-color: #2d3436; 
+              color: #ffffff; 
+              text-decoration: none; 
+              border-radius: 50px; 
+              font-size: 0.85rem; 
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              transition: opacity 0.2s;">
+       Dataset
+    </a> 
+    to generate comprehensive, exportable PDF emotional analytics.
+</p>
+          <a href="https://github.com/Sifatkhan-1915020/Emotion-Recognizer" class="project-link">Project Code &rarr;</a>
+        </div>
+     
+        <div class="card col-4">
+          <div class="thumb">
+            <img src="mongo.svg" alt="Dashboard">
+          </div>
+          <span class="badge">Database</span>
+          <h4>SimpleY: A Basic Social Media Website</h4>
+          <p>
+            #SimpleY -V 1.0 ⚡ made by HTML, CSS, JS, MongoDB, Flask 👉 This is a simple social media platform where ✅ user upload their own profile picture ✅ upload image in their time line ✅ comment on their own pic ✅ visit other profile ✅ can comment other pic
+          </p>
+          <a href="https://github.com/Sifatkhan-1915020/profile_uploader_V1" class="project-link">Project Code &rarr;</a>
+        </div>
+
+       <div class="card col-4">
+          <div class="thumb">
+            <img src="CV_1.png" alt="Dashboard">
+          </div>
+          <span class="badge">Nodejs</span>
+          <h4>CV Maker: A Easy Tool to make CV & Download</h4>
+          <p>
+             A dynamic Node.js-driven career development tool engineered to streamline the curriculum vitae (CV)
+              generation process. The application allows users to input structured professional data, including 
+              specialized titles and performance activities, which are then processed through a custom formatting
+               engine to produce high-fidelity, industry-standard PDF resumes instantly.
+          </p>
+          <a href="https://github.com/Sifatkhan-1915020/Cv-Builder" class="project-link">Project Code &rarr;</a>
+        </div>
+         
+           <div class="card col-4">
+   <div class="embed-wrapper" style="margin-top: 15px;">
+    <iframe 
+      src="https://sifatkhan-1915020.github.io/biomedi19.github.io/" 
+      width="100%" 
+      height="300" 
+      style="border: 1px solid #ccc; border-radius: 4px;"
+      title="Project Preview">
+    </iframe>
+  </div>
+  <p class="embed-caption" style="margin-top: 10px; font-size: 0.9em; color: #555;">
+    Above is the live preview of the repository. You can browse the source code directly in this window.
+  </p>
+
+  <span class="badge">Static Web Page</span>
+  <h4>Batch Intro: Introdcution of my classmates of BME19, KUET.</h4>
+  <p>
+    This wasn't just my first design; it was a labor of love. Born in 2020, this project serves as a digital sanctuary for the memories of my batchmates, BME19 KUET.
+    When our juniors, BME20, graced the campus in 2022, I transformed this Website into a bridge—a grand introduction to the seniors they would come to admire. 
+    It is a nostalgic journey, a tribute to friendship, and a gift to the legacy we leave behind.
+  </p> <br>
+  <p>you can get the source code of it from here</p>
+  <a href="https://sifatkhan-1915020.github.io/biomedi19.github.io/" class="project-link">Source Code &rarr;</a>
+  
+ 
+</div>
+
+<div class="card col-4">
+   <div class="embed-wrapper" style="margin-top: 15px;">
+    <iframe 
+      src="https://kuetbme19.github.io/bmeindoor.github.io/" 
+      width="100%" 
+      height="300" 
+      style="border: 1px solid #ccc; border-radius: 4px;"
+      title="Project Preview">
+    </iframe>
+  </div>
+  <p class="embed-caption" style="margin-top: 10px; font-size: 0.9em; color: #555;">
+    Above is the live preview of the repository. You can browse the source code directly in this window.
+  </p>
+
+  <span class="badge">Static Web Page</span>
+  <h4>BME Indoor Games 2023 Organizing Website</h4>
+  <p>
+    I have been built it for BME Indoor Games 2023. I was the core memeber of organizing committee. I have made it using HTML, CSS. 
+  </p> <br>
+  <p>you can get the source code of it from here</p>
+  <a href="#" class="project-link">Source Code &rarr;</a>
+  
+ 
+</div>
+      
+ <div class="card col-4">
+          <div class="thumb">
+            <img src="rag_1.png" alt="Dashboard">
+          </div>
+          <span class="badge">RAG Pipeline</span>
+          <h4>Weba: Turn Any Website into a Conversationd</h4>
+          <p>
+               I built Weba to solve the problem of information overload. It’s an AI-powered app that lets you chat with any website link.
+
+               It's not just a wrapper; it's a full RAG pipeline built entirely in Streamlit. 
+                By using Groq as the AI brain, it delivers answers faster than you can type them. No more Ctrl+F—just ask, and Weba knows.
+          </p>
+          <a href="https://website-reader-6mehxlyvj2mhno4bjenxeu.streamlit.app/" class="project-link"><span class="badge">Live WebApp</span></a>
+          <a href="https://github.com/Sifatkhan-1915020/website-reader/tree/main" class="project-link">Project Code &rarr;</a>
+        </div>
+
+    <div class="card col-4">
+          <div class="thumb">
+            <img src="drug_1.png" alt="Dashboard">
+          </div>
+          <span class="badge">AI in Drug Research</span>
+          <h4>AI Drug Discovery for Lung Cancer WebApp </h4>
+          <p>
+               Built a machine learning pipeline to identify potential EGFR inhibitors using Python.
+                Processed bioactivity data from ChEMBL and generated molecular descriptors (Lipinski’s Rule) using RDKit. 
+                Trained a Random Forest model to classify molecules as Active/Inactive and deployed the solution as a Streamlit web app for instant prediction and reporting.
+          </p>
+          <a href="https://drug-prediction-for-efgr-ugy4z9pvwbwog5jhtp5mns.streamlit.app/" class="project-link"><span class="badge">Live WebApp</span></a>
+          <a href="https://github.com/Sifatkhan-1915020/drug-prediction-for-EFGR" class="project-link">Project Code &rarr;</a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <section id="instrumentation">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Instrumentation Projects</h2>
+        <p class="section-sub">From sensors to systems — practical, reliable builds.</p>
+      </div>
+
+      <div class="grid">
+        
+        <div class="card col-4">
+          <div class="slider-wrapper">
+            <div class="slides">
+              <div class="slide"><img src="ip1_1.png" alt="Setup 1"></div>
+              <div class="slide"><img src="IP1_2.png" alt="Setup 2"></div>
+              <div class="slide"><img src="IP1_3.png" alt="Setup 3"></div>
+            </div>
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Healthcare Automation</span>
+          <h4>Blood Back Flow Prevention</h4>
+          <ul>
+            <li>Dual-Hazard Prevention: Automatically prevents retrograde blood flow (backflow) and air embolisms from entering the patient's vein.</li> 
+            <li>Automated Locking: Instantly clamps the IV tube using a solenoid valve to cut off flow when hazards are detected.</li> 
+            <li>Sensor Integration: Combines a Load Cell to monitor fluid weight and optical sensors to detect air bubbles in real-time.</li>
+             <li>Wireless Telemetry: Features Bluetooth (HC-05) connectivity and a custom Android app for remote monitoring and control.</li> 
+             <li>Validated Performance: Achieved an overall experimental accuracy of 93.05% in detecting flow hazards and weight changes.</li>
+          </ul>
+          <div class="btn-group">
+            <a href="32_project_report.pdf" download class="btn btn-primary btn-sm">📄 Report</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+            <div class="slides">
+              <div class="slide"><img src="dia_1.png" alt="Dia 1"></div>
+              <div class="slide"><img src="dia_2.png" alt="Dia 2"></div>
+              <div class="slide"><img src="dia_3.png" alt="Dia 3"></div>
+              <div class="slide"><img src="dia_4.png" alt="Dia 4"></div>
+              <div class="slide"><img src="dia_5.png" alt="Dia 5"></div>
+              <div class="slide"><img src="dia_6.png" alt="Dia 6"></div>
+            </div>
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Healthcare Assistance</span>
+          <h4>Diatracker: Multimodal Device</h4>
+          <ul>
+            <li>Engineered a non-invasive device to simultaneously measure Glucose, Cholesterol, Heart Rate, and SpO2 using Red/IR LED optical sensing.</li>
+            <li>Developed regression models (n=8) achieving R² correlation values of 0.9525 for Cholesterol and 0.7394 for Glucose.</li>
+            <li>Intregated app for user friendly visualization dashboard for phsiological parameter.</li>
+            <li>Integrated a closed-loop insulin infusion mechanism capable of operating with 90% functional accuracy.</li>
+            <li>Telemedicine for diabetic patients for real time connectivity with preferred doctors</li>
+            <li>It is already published in IEEE explore as comference paper</li>
+          </ul>
+          <div class="btn-group">
+            <a href="diatracker.pdf" download class="btn btn-primary btn-sm">📄 Report</a>
+            <a href="https://doi.org/10.1109/QPAIN66474.2025.11172255" target="_blank" class="btn btn-outline btn-sm">IEEE Xplore</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+            <div class="slides">
+              <div class="slide"><img src="airbender_1.jpg" alt="Air 1"></div>
+              <div class="slide"><img src="airbender_2.jpeg" alt="Air 2"></div>
+              <div class="slide"><img src="airbender_3.jpeg" alt="Air 3"></div>
+            </div>
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Low Cost Monitoring</span>
+          <h4>AirBender: Air Quality Monitor</h4>
+          <ul>
+            <li>Engineered a novel "Plug-and-Play" interface that allows users to instantly swap sensor modules (e.g., LPG to Dust) without replacing the core unit..</li>
+            <li>Designed a custom, protective enclosure using SolidWorks to house the electronic components and ensure durability.</li>
+            <li>Integrated Arduino with HC-05 Bluetooth modules to establish real-time remote telemetry and data monitoring capabilities.</li>
+            <li>Developed a cost-effective platform architecture that maximizes utility by allowing a single core device to serve multiple sensing applications.</li>
+            <li>Secured 1st Prize in two separate engineering competitions, validating the project's innovative design and technical execution.</li>
+          </ul>
+          <div class="btn-group">
+            <a href="Team Airbenders_Project Ba-U.pdf" download class="btn btn-primary btn-sm">📄 Report</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+            <div class="slides">
+              <div class="slide"><img src="RC_1.jpg" alt="RC 1"></div>
+              <div class="slide">
+                <video src="RC_2.mp4" autoplay muted loop playsinline></video>
+              </div>
+              <div class="slide">
+                <video src="RC_3.mp4" autoplay muted loop playsinline></video>
+              </div>
+            </div>
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Remote Control</span>
+          <h4>Robo Nurse Assist</h4>
+          <ul>
+             <li>Remote controlled vehicle for medical supply delivery.</li>
+             <li>Circuit implementation and 3D design responsibility.</li>
+             <li>In collaborations with one of my senior as part of her undergraduate project</li>
+          </ul>
+          <div class="btn-group">
+            <a href="robo nurse assist.pdf" download class="btn btn-primary btn-sm">📄 Report</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+            <div class="slides">
+              <div class="slide"><img src="hr_1.jpeg" alt="HR 1"></div>
+              <div class="slide"><img src="hr_2.jpeg" alt="HR 2"></div>
+              <div class="slide"><img src="hr_0.png" alt="HR Circuit"></div>
+              <div class="slide">
+                 <video src="hr_3.mp4" autoplay muted loop playsinline></video>
+              </div>
+            </div>
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Healthcare Monitoring</span>
+          <h4>Non-invasive Heart Rate Monitor</h4>
+          <ul>
+            <li>LED-Phototransistor based system for low cost heart rate monitoring.</li>
+            <li>Signal processed by Arduino Uno and transmitted via Wi-Fi.</li>
+            <li>It is a team work, my role is to implementation of microcontroller connection and calibration</li>
+          </ul>
+          <div class="btn-group">
+            <a href="hr.pdf" download class="btn btn-primary btn-sm">📄 Report</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+            <div class="slides">
+              <div class="slide"><img src="venti_1.jpeg" alt="Vent 1"></div>
+              <div class="slide"><img src="venti_2.jpeg" alt="Vent 2"></div>
+              <div class="slide">
+                 <video src="ventilator.mp4" autoplay muted loop playsinline></video>
+              </div>
+            </div>
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Biomedical Device</span>
+          <h4>Low Cost Ventilator</h4>
+          <ul>
+            <li>Affordable ventilator solution for Covid patients.</li>
+            <li>Stable air-pushing mechanism with pressure management.</li>
+            <li><b>Collaboration with one of my senior as part of his thesis work</b></li>
+          </ul>
+          <div class="btn-group">
+            <a href="ventilator.pdf" download class="btn btn-primary btn-sm">📄 Report</a>
+          </div>
+        </div>
+
+        
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+            <div class="slides">
+               <div class="slide"><img src="pat_1.png" alt="Patient 1"></div>
+               <div class="slide"><img src="pat_2.jpeg" alt="Patient 2"></div>
+               <div class="slide"><img src="pat_3.jpeg" alt="Patient 3"></div>
+            </div>
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Biomedical Monitoring</span>
+          <h4>Android Patient Health Monitor</h4>
+          <ul>
+            <li>Remotely monitors Temp, Heart Rate, SpO2, Humidity, and Movement.</li>
+            <li>Low-cost system with app-based access and visualization.</li>
+          </ul>
+          <div class="btn-group">
+            <a href="patient_monitor.pdf" download class="btn btn-primary btn-sm">📄 Report</a>
+            <a href="https://github.com/Sifatkhan-1915020/MIT_App_Inventor_Project/blob/main/Patient%20Monitor.apk" class="btn btn-outline btn-sm">📱 Download APK</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="circuit">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Circuit Schematic & PCB Design</h2>
+        <p class="section-sub">Design, simulation, and virtual implementation in Proteus.</p>
+      </div>
+      <div class="grid">
+        
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="schematic_sound_switch_01.png" alt="Schematic"></div>
+               <div class="slide"><img src="pcb_sound_switch_1.png" alt="PCB"></div>
+               <div class="slide"><img src="3D_airMonitor.png" alt="3D View"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Environment Monitoring</span>
+          <h4>Dust & Pollution Detection Using OP-AMP</h4>
+          <ul>
+             <li>Dust monitoring system using LED, LDR, and OP-AMP.</li>
+             <li>Schematic capture and PCB layout design.</li>
+          </ul>
+          <div class="btn-group">
+            <a href="Sound_swtich.pdsprj" download class="btn btn-primary btn-sm">📄 Proteus File</a>
+            <a href="sound_swtich.3DS" download class="btn btn-outline btn-sm">🧊 3D File</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="LPF_PCB_3D.png" alt="LPF 3D"></div>
+               <div class="slide"><img src="lpf_pcb_Schematic.png" alt="LPF Schematic"></div>
+               <div class="slide"><img src="LPF_schematic.png" alt="LPF Diagram"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Signal Processing</span>
+          <h4>Low Pass Passive Filter Design</h4>
+          <ul>
+             <li>Designed and simulated Low Pass Filter circuit.</li>
+             <li>3D Visualization for component placement verification.</li>
+          </ul>
+          <div class="btn-group">
+            <a href="Low Pass Filter.pdsprj" download class="btn btn-primary btn-sm">📄 Proteus File</a>
+            <a href="LPF.3DS" download class="btn btn-outline btn-sm">🧊 3D File</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="circuit_vegus_nerve .png" alt="LPF 3D"></div>
+               <div class="slide"><img src="circuit_vegus_nerve_1.png" alt="LPF Schematic"></div>
+               <div class="slide"><img src="circuit_vegus_nerve_pcb.png" alt="LPF Diagram"></div>
+               <div class="slide"><img src="circuit_vegus_nerve_3D1.png" alt="LPF Diagram"></div>
+              <div class="slide"><img src="circuit_vegus_nerve_3D2.png" alt="LPF Diagram"></div>
+
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Signal Processing</span>
+          <h4>Low Pass Passive Filter Design</h4>
+          <ul>
+             <li>Designed and simulated Low Pass Filter circuit.</li>
+             <li>3D Visualization for component placement verification.</li>
+          </ul>
+          <div class="btn-group">
+            <a href="Low Pass Filter.pdsprj" download class="btn btn-primary btn-sm">📄 Proteus File</a>
+            <a href="LPF.3DS" download class="btn btn-outline btn-sm">🧊 3D File</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="simulation">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Simulation Study</h2>
+        <p class="section-sub">Design & Simulation in Comsol, CST, Material Stuio & Simulink</p>
+      </div>
+      <div class="grid">
+        
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="com_1.png" alt="Schematic"></div>
+               <div class="slide"><img src="com_res_1.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Comsol Project</span>
+          <h4>Nano size micropatch antenna simulation</h4>
+          <ul>
+             <li>Desinged in nanoscale to fit in human body</li>
+             <li>S11 curve show lowest dip at in between 0.7GHz to 0.8GHz and has a width band</li>
+          </ul>
+       
+        </div>
+         
+          <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="com_2.png" alt="Schematic"></div>
+               <div class="slide"><img src="com_res_2.png" alt="PCB"></div>
+               <div class="slide"><img src="com_res_3.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Comsol Project</span>
+          <h4>SPR BCF Biosensor</h4>
+          <ul>
+             <li>Desinged in Comsol</li>
+             <li>Give an expected simulation result</li>
+          </ul>
+       
+        </div>
+
+         <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="com_3.png" alt="Schematic"></div>
+               <div class="slide"><img src="com_res_4.png" alt="PCB"></div>
+               <div class="slide"><img src="com_res_5.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Comsol Project</span>
+          <h4>SPR BCF Biosensor-2</h4>
+          <ul>
+             <li>Desinged in Comsol</li>
+             <li>Give an expected simulation result</li>
+          </ul>
+       
+        </div>
+        
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="com_4.jpg" alt="Schematic"></div>
+               <div class="slide"><img src="com_5.jpg" alt="PCB"></div>
+              
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Comsol Project</span>
+          <h4>Bending Pipe Hydrodynamics</h4>
+          <ul>
+             <li>Desinged & Simultion in Comsol</li>
+             <li>Fluid flow pramters have been observed </li>
+          </ul>
+       
+        </div> 
+        
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="com_6.jpg" alt="Schematic"></div>
+               <div class="slide"><img src="com_7.jpg" alt="PCB"></div>
+               <div class="slide"><img src="com_8.jpg" alt="Schematic"></div>
+               <div class="slide"><img src="com_9.jpg" alt="PCB"></div>
+              
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Comsol Project</span>
+          <h4>Blood Flow Behavior in Renal Artery Stenosis.</h4>
+          <p>Renal artery stenosis (RAS), or renal artery disease, occurs when the arteries that carry blood to your kidneys get too narrow.
+            RAS can lead to serious health problems, including high blood pressure, chronic kidney disease or kidney failure. Here i observed the hemodynamics 
+          in the case of RAS.</p>
+       
+        </div>
+
+       <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="mpa_1.png" alt="Schematic"></div>
+               <div class="slide"><img src="mpa_1_res_1.png" alt="PCB"></div>
+               <div class="slide"><img src="mpa_1_res_2.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">CST Project</span>
+          <h4>Micropatch Antenna with Novel Design</h4>
+          <ul>
+             <li>Desinged & Simultion in CST</li>
+             <li>Very compact and small in size</li>
+             <li>{Base: Fr-4, Patch: Copper}</li>
+             <li>Not good in response as it show its dip in -10db</li>
+          </ul>
+         <div class="btn-group">
+            <a href="https://github.com/Sifatkhan-1915020/CST-Design/blob/main/MicroPatchAntenna_1.zip" download class="btn btn-primary btn-sm">📄 CST File</a>
+            
+          </div>
+        </div> 
+
+         <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="breast phantom_1.png" alt="Schematic"></div>
+               <div class="slide"><img src="breast_phantom_2.png" alt="PCB"></div>
+               <div class="slide"><img src="breast_phantom_3.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">CST Project</span>
+          <h4>Micropatch Antenna Based Breast Tumor Imaging Project</h4>
+          <ul>
+             <li>Desinged & Simultion in CST</li>
+             <li>Very compact and small in size</li>
+             <li>{Base: ***, Patch: Copper}</li>
+             <li>Good in response </li>
+             <li><h3>Detailed will be available in online soon</h3></li>
+          </ul>
+         <div class="btn-group">
+            <a href="#" download class="btn btn-primary btn-sm">📄 CST File</a>
+            
+          </div>
+        </div> 
+        
+       <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="mat_str_1.png" alt="Schematic"></div>
+               <div class="slide"><img src="mat_1.png" alt="PCB"></div>
+               <div class="slide"><img src="mat_2.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Material Studio Project</span>
+          <h4>Spectrum and Bandstructure Evaluation of BeO</h4>
+          <ul>
+             <li>Not highly precised </li>
+             <li>For study here CASTEP has been used</li>
+             <li>Geometrically optimized but not fine tunned</li>
+            
+          </ul>
+         <div class="btn-group">
+            <a href="BeO.stp" download class="btn btn-primary btn-sm">📄 Material Studio File </a>
+            
+          </div>
+        </div> 
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="mat_str_2.png" alt="Schematic"></div>
+               <div class="slide"><img src="mat_3.png" alt="PCB"></div>
+               <div class="slide"><img src="mat_4.png" alt="PCB"></div>
+               <div class="slide"><img src="mat_5.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Material Studio Project</span>
+          <h4>Optical Properties Evaluation of Boron Nitrade Single Wall Nano Tube (SWNT)</h4>
+          <ul>
+             <li>Not highly precised </li>
+             <li>For study here CASTEP has been used</li>
+             <li>Geometrically optimized but not fine tunned</li>
+            
+          </ul>
+         <div class="btn-group">
+            <a href="BN SWNT.stp" download class="btn btn-primary btn-sm">📄 Material Studio File </a>
+            
+          </div>
+        </div> 
+
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="simu_FIR_2.png" alt="Schematic"></div>
+               <div class="slide"><img src="simu_FIR_1.png" alt="PCB"></div>
+              
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Simulink Project </span>
+          <h4>FIR Filter Simulation</h4>
+         
+         <div class="btn-group">
+            <a href="FIRfilter.slx" download class="btn btn-primary btn-sm">📄 Simulink File  </a>
+            
+          </div>
+        </div> 
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="lung_1.png" alt="Schematic"></div>
+               <div class="slide"><img src="lung_2.png" alt="PCB"></div>
+              
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Simulink Project </span>
+          <h4>Mathematical Model Simulation of Human Lung</h4>
+         
+         <div class="btn-group">
+            <a href="lungmodel.slx" download class="btn btn-primary btn-sm">📄 Simulink File </a>
+            
+          </div>
+        </div> 
+      
+      <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="rlc_1.png" alt="Schematic"></div>
+               <div class="slide"><img src="rlc_2.png" alt="PCB"></div>
+              
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Simulink Project </span>
+          <h4>Transfer Function Based RLC Circuit Simulation in Simulink</h4>
+         
+         <div class="btn-group">
+            <a href="rlcCircuit.slx" download class="btn btn-primary btn-sm">📄 Simulink File </a>
+            
+          </div>
+        </div> 
+
+         <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="hodgekin.png" alt="Schematic"></div>
+               <div class="slide"><img src="hodgekin_1.png" alt="PCB"></div>
+                <div class="slide"><img src="hodgekin_2.png" alt="Schematic"></div>
+               <div class="slide"><img src="hodgekin_3.png" alt="PCB"></div>
+               <div class="slide"><img src="hodgekin_4.png" alt="PCB"></div>
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+          <span class="badge">Simulink Project </span>
+          <h4>Implementation of Hodgeking-Huxley Model in Simulink </h4>
+         
+         <div class="btn-group">
+            <a href="MATLAB CODE FOR IMPLEMENTATION HODGKIN.pdf" download class="btn btn-primary btn-sm">📄 Report Download </a>
+            
+          </div>
+        </div> 
+
+
+      </div>
+    </div>
+  </section>
+   
+<!---update hobe -->
+<section id="office">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Microsoft office Projects</h2>
+        <p class="section-sub">Design, simulation, and virtual implementation in Proteus.</p>
+      </div>
+      <div class="grid">
+        
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="excel_1.png" alt="Schematic"></div>
+             
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+           <span class="badge">Forecasting Project</span>
+          <h4>Sales Forecasting Using Excel Dashboard</h4>
+          <ul>
+             <li>Visualize total forecasted sales.</li>
+             <li>Visualize total staffing & total raw material order placement</li>
+             <li>Graphical visualization of sales forecasting & confidence boundary </li>
+          </ul>
+          <div class="btn-group">
+            <a href="Sound_swtich.pdsprj" download class="btn btn-primary btn-sm">📄 Proteus File</a>
+            <a href="sound_swtich.3DS" download class="btn btn-outline btn-sm">🧊 3D File</a>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="slider-wrapper">
+             <div class="slides">
+               <div class="slide"><img src="excel_2.png" alt="LPF 3D"></div>
+               
+             </div>
+             <button class="slider-btn prev">&#10094;</button>
+             <button class="slider-btn next">&#10095;</button>
+          </div>
+           <span class="badge">Healthcare Mapping Project</span>
+          <h4>Physial Health Status Mapping Dashboard</h4>
+          <ul>
+             <li>Visualize Obesity, Normal, Underweight, Overweight population on map</li>
+             <li>Auto upgradation of data</li>
+              <li>Anytime printing facility</li>
+          </ul>
+          <div class="btn-group">
+            <a href="heatlh_dashboard.xlsx" download class="btn btn-primary btn-sm">📄 Project Excel File</a>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section id="design">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">3D Modeling & Visualization</h2>
+        <p class="section-sub">Engineering precision meets artistic rendering.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card cinema-card">
+          <div class="slider-wrapper cinema-slider-wrapper">
+            <div class="slides">
+              
+              <div class="slide cinema-slide">
+                <img src="solid_1.jpg" alt="Air Pressure Transducer">
+                <div class="caption-overlay">
+                  <h4>Air Pressure Transducer</h4>
+                  <p>Modeled in <span class="badge badge-sw">SolidWorks</span> • Rendered in <span class="badge badge-bl">Blender</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="solid_2.jpg" alt="Transducer Internal">
+                <div class="caption-overlay">
+                  <h4>Air Pressure Transducer (Internal)</h4>
+                  <p>Modeled in <span class="badge badge-sw">SolidWorks</span> • Rendered in <span class="badge badge-bl">Blender</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="blender_1.jpg" alt="Flooded Subway">
+                <div class="caption-overlay">
+                  <h4>A Flooded Subway</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="Blender_2.jpg" alt="Flooded Subway View 2">
+                <div class="caption-overlay">
+                  <h4>Flooded Subway (Perspective 2)</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="blender_3.jpg" alt="Mystic Piano">
+                <div class="caption-overlay">
+                  <h4>Mystic Room of Piano</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="blender_4.jpg" alt="Fuel Station Clay">
+                <div class="caption-overlay">
+                  <h4>Dreamy Fuel Station (Structure)</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Clay)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="Blender_5.jpg" alt="Fuel Station Render">
+                <div class="caption-overlay">
+                  <h4>Dreamy Fuel Station (Final)</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="blender_7.jpg" alt="Mini Truck">
+                <div class="caption-overlay">
+                  <h4>Mini Truck Concept</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="blender_8.jpg" alt="Moonlight Boat">
+                <div class="caption-overlay">
+                  <h4>Boat Beneath the Moon</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="blender_9.jpg" alt="Cozy Room">
+                <div class="caption-overlay">
+                  <h4>Isometric Cozy Room</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+              
+               <div class="slide cinema-slide">
+                <img src="blender_11.jpg" alt="War Scene">
+                <div class="caption-overlay">
+                  <h4>To The War!</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+              
+              <div class="slide cinema-slide">
+                <img src="blender_12.jpg" alt="Makeup Room">
+                <div class="caption-overlay">
+                  <h4>Makeup Room Interior</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Cycles)</span></p>
+                </div>
+              </div>
+
+              <div class="slide cinema-slide">
+                <img src="blender_16.jpg" alt="Bus Stop">
+                <div class="caption-overlay">
+                  <h4>Innovative Modern Bus Stop</h4>
+                  <p>Modeled in <span class="badge badge-bl">Blender</span> • Rendered in <span class="badge badge-bl">Blender (Eevee)</span></p>
+                </div>
+              </div>
+
+            </div>
+            
+            <button class="slider-btn prev" style="width:50px; height:50px; font-size:1.5rem;">&#10094;</button>
+            <button class="slider-btn next" style="width:50px; height:50px; font-size:1.5rem;">&#10095;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   
+
+   
+  <section id="graphic-design">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Video & Graphic Desing</h2>
+        <p class="section-sub">Software: Adobe Premier Pro, Canva, Climpchamp, Blender</p>
+      </div>
+
+      <div class="grid">
+        <div class="card cinema-card">
+          <div class="slider-wrapper cinema-slider-wrapper">
+            <div class="slides">
+                <div class="slide cinema-slide" style="display: flex; flex-direction: column; align-items: center;">
+  
+  <div class="embed-wrapper" style="width: 100%; margin-top: 15px;">
+    <iframe 
+        src="https://drive.google.com/file/d/1R2rJq2Iy6i04fsUMWuAOdSMldW216ulr/preview" 
+        width="100%" 
+        height="500" 
+        style="border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+        allow="autoplay"
+        title="BME19 Project Preview">
+    </iframe>
+  </div>
+
+  <div class="caption-content" style="text-align: center; margin-top: 20px; width: 100%;">
+    <h4 style="margin-bottom: 5px;">Video Submission of Team Nimbus in EEE day</h4>
+    <p>
+      Edited with <span class="badge badge-sw"> Climpchamp& Adobe Premier Pro </span> • 
+    </p>
+  </div>
+
+</div>
+           
+
+
+      <div class="slide cinema-slide" style="display: flex; flex-direction: column; align-items: center;">
+  
+  <div class="embed-wrapper" style="width: 100%; margin-top: 15px;">
+    <iframe 
+        src="https://drive.google.com/file/d/1enRKdKiv3oBXchONUQqoF1-T1y3RFoYv/preview" 
+        width="100%" 
+        height="500" 
+        style="border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+        allow="autoplay"
+        title="BME19 Project Preview">
+    </iframe>
+  </div>
+
+  <div class="caption-content" style="text-align: center; margin-top: 20px; width: 100%;">
+    <h4 style="margin-bottom: 5px;">Video for Team Durbar for IRC</h4>
+    <p>
+      Edited with <span class="badge badge-sw">Adobe Premier Pro & Blender </span> • 
+    </p>
+  </div>
+
+</div>
+   
+
+
+  <div class="slide cinema-slide" style="display: flex; flex-direction: column; align-items: center;">
+  
+  <div class="embed-wrapper" style="width: 100%; margin-top: 15px;">
+    <iframe 
+        src="https://drive.google.com/file/d/1KRxy5CmrZ-f1LOEOWussVvXEoHKxj56_/preview" 
+        width="100%" 
+        height="500" 
+        style="border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+        allow="autoplay"
+        title="BME19 Project Preview">
+    </iframe>
+  </div>
+
+  <div class="caption-content" style="text-align: center; margin-top: 20px; width: 100%;">
+    <h4 style="margin-bottom: 5px;">Video for my Team Mavericks for Over the wall submission</h4>
+    <p>
+      Edited with <span class="badge badge-sw">Adobe Premier Pro & Canva</span> • 
+    </p>
+  </div>
+
+</div>  
+
+<div class="slide cinema-slide" style="display: flex !important; flex-direction: column !important; align-items: center !important; height: auto !important; min-height: 650px;">
+  
+  <div class="embed-wrapper" style="width: 100%; margin-top: 15px; flex-shrink: 0;">
+    <iframe 
+        src="https://drive.google.com/file/d/1u6g08_KN9Tn2mxFmCF_QSZqlYTBz44LX/preview" 
+        width="100%" 
+        height="400" 
+        style="border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+        allow="autoplay"
+        title="BME19 Project Preview">
+    </iframe>
+  </div>
+
+  <div class="caption-content" style="display: block !important; visibility: visible !important; text-align: center !important; margin-top: 20px; width: 100%; padding-bottom: 20px;">
+    <h6 style="margin-bottom: 5px; color: inherit !important;">Video for my Team Durbar Rover exploration</h6>
+    <p style="display: block !important;">
+      Edited with <span class="badge badge-sw" style="display: inline-block !important;">Adobe Premiere Pro & Blender</span>
+    </p>
+  </div>
+
+</div>  
+
+<div class="slide cinema-slide" style="display: flex !important; flex-direction: column !important; align-items: center !important; height: auto !important; min-height: 650px;">
+  
+  <div class="embed-wrapper" style="width: 100%; margin-top: 15px; flex-shrink: 0;">
+    <iframe 
+        src="poster_1.png" 
+        width="100%" 
+        height="500px" 
+        style="border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+        allow="autoplay"
+        title="BME19 Project Preview">
+    </iframe>
+  </div>
+
+  <div class="caption-content" style="display: block !important; visibility: visible !important; text-align: center !important; margin-top: 20px; width: 100%; padding-bottom: 20px;">
+    <h4 style="margin-bottom: 5px; color: inherit !important;">Poster Design for Technomize 1.0 Submission</h4>
+    <p style="display: block !important;">
+      Edited with <span class="badge badge-sw" style="display: inline-block !important;">Canva</span>
+    </p>
+  </div>
+
+</div>  
+
+<div class="slide cinema-slide" style="display: flex !important; flex-direction: column !important; align-items: center !important; height: auto !important; min-height: 650px;">
+  
+  <div class="embed-wrapper" style="width: 100%; margin-top: 15px; flex-shrink: 0;">
+    <iframe 
+        src="FAREWELL.png" 
+        width="100%" 
+        height="400" 
+        style="border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+        allow="autoplay"
+        title="BME19 Project Preview">
+    </iframe>
+  </div>
+
+  <div class="caption-content" style="display: block !important; visibility: visible !important; text-align: center !important; margin-top: 20px; width: 100%; padding-bottom: 20px;">
+    <h4 style="margin-bottom: 5px; color: inherit !important;">Poster Design for Farewell Programme</h4>
+    <p style="display: block !important;">
+      Edited with <span class="badge badge-sw" style="display: inline-block !important;">Canva</span>
+    </p>
+  </div>
+
+</div>
+
+          
+            </div>
+            
+            <button class="slider-btn prev" style="width:50px; height:50px; font-size:1.5rem;">&#10094;</button>
+            <button class="slider-btn next" style="width:50px; height:50px; font-size:1.5rem;">&#10095;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<section id="publication">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Publication</h2>
+        <p class="section-sub">Healthcare innovation & research </p>
+      </div>
+      <div class="grid">
+        <div class="card col-4">
+          <div class="thumb" style="width: 100%; height: 100%; overflow: hidden;">
+    <img src="pub_1.png" 
+         alt="Dining Monitor" 
+         style="width: 100%; height: 100%; object-fit: contain; display: block;">
+</div>
+          <h4>Conference Paper</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">IEEE Qpain 2025.</p>
+          <p>Diabetes assistance device design, implementation & evaluation also Me and my co-investigators tried to find out non-invasive 
+            method to measuring glucose and cholesterol level in blood.<br>
+            Please cite my paper if it helps your relevant research work.<br>
+            you can find the paper using below link- 
+          </p>
+          <a href="https://ieeexplore.ieee.org/document/11172255" download class="btn btn-primary btn-sm">📄 Paper </a>
+        </div>
+       
+        
+      </div>
+    </div>
+  
+
+  
+  </section>
+
+
+
+
+
+
+
+
+  <section id="cine">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Achievements</h2>
+        <p class="section-sub">Honors, awards, and milestones from my academic and professional journey.</p>
+      </div>
+
+      <div class="cine-grid">
+        
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="bme_grad.jpg" alt="Graduation Crest BME" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Graduation Crest</h5>
+            <h6>Department of Biomedical Engineering, KUET</h6>
+            <span>Milestone Moment✅</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="grad_hall.jpg" alt="Graduation Crest Hall" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Graduation Crest</h5>
+            <h6>Dr M. A Rashid Hall, KUET</h6>
+            <span>Milestone Moment✅</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="hall_com.jpg" alt="Farewell Crest" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Farewell Crest</h5>
+            <h6>Monitor (Dining), Hall Committee 2024-2025, Dr M A Rashid Hall, KUET</h6>
+            <span>Milestone Moment✅</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="annual_feast.jpg" alt="Feast Organizer" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Reward Crest</h5>
+            <h6>Annual Feast Organizer, Annual Feast 2025, Dr M A Rashid Hall, KUET</h6>
+            <span>Milestone Moment✅</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="fablabchamp.jpg" alt="IUIIPC Champ" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1565514020176-6c2235b8b3a9?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Champion</h5>
+            <h6>IUIIPC-2022</h6>
+            <span>by ICT Division, Bangladesh Government.</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="bizbash.jpg" alt="BizBash Champ" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1578269174936-2709b6aeb913?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Champion</h5>
+            <h6>BizBash 2.0</h6>
+            <span>by KUET Career Club, KUET.</span>
+          </div>
+        </div>
+
+         <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="envoframe.jpg" alt="Black Brains" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>2nd Runners Up</h5>
+            <h6>Khulna ENVOFRAME</h6>
+            <span>Climate Solutions for Sustainable Future</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="vortex.jpg" alt="Hardware Quest" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1581092921461-eab62e97a782?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Runners Up</h5>
+            <h6>Hardware Quest-2022</h6>
+            <span>by Hardware Acceleration Club of KUET.</span>
+          </div>
+        </div>
+
+       
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="black brain.png" alt="Black Brains" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>3rd Round Qualifier</h5>
+            <h6>Ideation 1.0, a Visionary Idea Competition</h6>
+            <span>by Black Brains.</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="3MT.png" alt="3MT Thesis" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>2nd Round Qualifier</h5>
+            <h6>3MT Thesis Presentation Competition</h6>
+            <span>by KUET Research Society, KUET.</span>
+          </div>
+        </div>
+
+        <div class="cine-item" style="aspect-ratio: auto; height: auto;">
+          <img src="Technomize.jpg" alt="Technomize" style="width: 100%; height: auto; object-fit: contain; display: block;" onerror="this.src='https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=800&q=80'">
+          <div class="cine-caption">
+            <h5>Participation</h5>
+            <h6>Poster Presentation</h6>
+            <span>Technomize 1.0 - National Tech Fest</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 40px;">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-sub">Can we collaborate? Let's build something together.</p>
+      </div>
+
+      <div style="max-width: 600px; margin: 0 auto 60px; text-align: left;">
+        <form name="submit-to-google-sheet" id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <input type="text" name="Name" placeholder="Your Name" required 
+              style="width:100%; padding:15px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); border-radius:12px; color:var(--text-main); outline:none;">
+            
+            <input type="email" name="Email" placeholder="Your Email" required 
+              style="width:100%; padding:15px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); border-radius:12px; color:var(--text-main); outline:none;">
+          </div>
+          
+          <textarea name="Message" rows="5" placeholder="Your Message" required
+            style="width:100%; padding:15px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); border-radius:12px; color:var(--text-main); outline:none; font-family:inherit;"></textarea>
+
+          <button type="submit" class="btn btn-primary" style="align-self: flex-start; min-width: 150px; justify-content: center;">
+            Send Message
+          </button>
+          
+          <span id="msg" style="color: var(--accent); font-weight: 500; display: block; margin-top: 10px;"></span>
+        </form>
+      </div>
+
+       <div class="foot-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px;">
+  
+  <a href="mailto:sifatkhan.bme.kuet.bd@gmail.com" title="Email" style="text-decoration: none; color: #ea4335; font-size: 24px; transition: transform 0.3s, filter 0.3s;" onmouseover="this.style.transform='scale(1.3)'; this.style.filter='drop-shadow(0 0 8px #ea4335)';" onmouseout="this.style.transform='scale(1)'; this.style.filter='none';">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <a href="tel:+8801633004146" title="Call Me" style="text-decoration: none; color: #34a853; font-size: 24px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    <i class="fas fa-phone"></i>
+  </a>
+
+  <a href="https://wa.me/8801739510750" title="WhatsApp" style="text-decoration: none; color: #25d366; font-size: 24px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/sifat-khan-17a4873a3/" title="LinkedIn" style="text-decoration: none; color: #0077b5; font-size: 24px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    <i class="fab fa-linkedin"></i>
+  </a>
+
+  <a href="https://github.com/Sifatkhan-1915020" title="GitHub" style="text-decoration: none; color: #333; font-size: 24px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <a href="https://orcid.org/0009-0004-5298-8062" title="ORCID" style="text-decoration: none; color: #a6ce39; font-size: 24px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    <i class="fab fa-orcid"></i>
+  </a>
+
+  <a href="https://scholar.google.com/citations?user=7_KN_MsAAAAJ&hl=en" title="Google Scholar" style="text-decoration: none; color: #4285f4; font-size: 24px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    <i class="fas fa-graduation-cap"></i>
+  </a>
+
+  <a href="https://www.facebook.com/sifat.babu.334" title="Facebook" style="text-decoration: none; color: #1877f2; font-size: 24px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)';" onmouseout="this.style.transform='scale(1)';">
+    <i class="fab fa-facebook"></i>
+  </a>
+
+</div>
+
+
+
+
+      <p style="margin-top:30px; color:var(--text-muted); font-size:0.9rem;">
+        &copy; 2026 K. M. Sifat.
+      </p>
+    </div>
+  </footer>
+
+  <div class="floating-controls">
+    
+    <a href="CV_Sifat.pdf" download class="cv-btn-float" aria-label="Download CV">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      <span>Download My CV</span>
+    </a>
+
+    
+  <a href="ai.html" class="meai-floating-button">
+    MeAI
+  </a>
+  
+
+
+    <button id="scrollTopBtn" class="control-btn scroll-btn" aria-label="Scroll to Top">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    // --- FORM SUBMISSION SCRIPT ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxh3BPWxsf6xXz6HYaDDX_EEb1Orspvefiu23atBXWYgM7QTVVjveE8WwoaP8s9FID3/exec'; 
+    const form = document.forms['submit-to-google-sheet'];
+    const msg = document.getElementById("msg");
+
+    if(form){
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        msg.innerHTML = "Sending...";
+        msg.style.color = "var(--text-muted)";
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            msg.innerHTML = "Message sent successfully!";
+            msg.style.color = "var(--accent)"; 
+            setTimeout(() => msg.innerHTML = "", 5000);
+            form.reset();
+          })
+          .catch(error => {
+            msg.innerHTML = "Error sending message.";
+            msg.style.color = "#ff7675"; 
+          });
+      });
+    }
+
+    // 1. Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+
+    // Check Local Storage
+    if(localStorage.getItem('theme') === 'light'){
+      htmlEl.setAttribute('data-theme', 'light');
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      if(currentTheme === 'light') {
+        htmlEl.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      } else {
+        htmlEl.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      }
+    });
+
+    // 2. Mobile Navigation
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const links = document.querySelectorAll('.links a');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      const bars = hamburger.querySelectorAll('.bar');
+      if(navLinks.classList.contains('active')) {
+        bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+        bars[1].style.opacity = '0';
+        bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+      } else {
+        bars[0].style.transform = 'none';
+        bars[1].style.opacity = '1';
+        bars[2].style.transform = 'none';
+      }
+    });
+    
+    links.forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.querySelectorAll('.bar').forEach(b => { b.style.transform='none'; b.style.opacity='1'; });
+    }));
+
+    // 3. Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 4. Universal Slider Logic
+    document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
+      const slides = wrapper.querySelector('.slides');
+      const slideImages = wrapper.querySelectorAll('.slide');
+      const prevBtn = wrapper.querySelector('.prev');
+      const nextBtn = wrapper.querySelector('.next');
+      let currentIndex = 0;
+
+      function updateSlider() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slideImages.length;
+        updateSlider();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slideImages.length) % slideImages.length;
+        updateSlider();
+      });
+    });
+
+    // 5. Scroll To Top Logic
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

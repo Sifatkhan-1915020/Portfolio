@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sifat — Engineering Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Modern Neon & Deep Space Palette */
+      --bg-deep: #030712;
+      --primary: #38bdf8;       /* Sky Blue */
+      --secondary: #c084fc;     /* Electric Purple */
+      --accent: #2dd4bf;        /* Teal */
+      --glass-bg: rgba(17, 24, 39, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --glow: 0 0 20px rgba(56, 189, 248, 0.15);
+      --radius: 20px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* --- Reset & Base --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background-color: var(--bg-deep);
+      /* Parallax Gradient Background */
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15), transparent 25%), 
+        radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.15), transparent 25%);
+      background-attachment: fixed; /* Parallax Magic */
+      background-size: cover;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; padding-left: 20px; }
+    ul li { margin-bottom: 8px; position: relative; }
+    ul li::before {
+      content: "▹"; color: var(--accent); position: absolute; left: -20px;
+    }
+
+    /* --- Layout Utilities --- */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 100px 0; position: relative; }
+
+    /* --- Navbar --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(3, 7, 18, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1002;
+    }
+
+    /* Desktop Links */
+    .links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .links a:hover, .links a.active {
+      color: var(--primary);
+    }
+
+    .links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .links a:hover::after { width: 100%; }
+
+    /* Mobile Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1002;
+      gap: 6px;
+    }
+    
+    .bar {
+      width: 28px;
+      height: 2px;
+      background: var(--text-main);
+      transition: var(--transition);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .intro-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, #fff, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .intro-content p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: var(--transition);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero .glass-card {
+      background: rgba(3, 7, 18, 0.4); 
+      border: 1px solid rgba(56, 189, 248, 0.1);
+    }
+
+    /* Buttons */
+    .btn-group { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;}
+    
+    .btn {
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--text-main);
+      color: var(--bg-deep);
+    }
+    
+    .btn-primary::before {
+      content: ''; position: absolute; top:0; left:0; width:0%; height:100%;
+      background: var(--primary); transition: 0.4s; z-index: -1;
+    }
+    .btn-primary:hover::before { width: 100%; }
+    .btn-primary:hover { color: #fff; box-shadow: var(--glow); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+    .tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      font-weight: 600;
+    }
+
+    /* Hero Image */
+    .profile-frame {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 1/1.1;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 1px solid var(--glass-border);
+    }
+    
+    .profile-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .profile-frame:hover img { transform: scale(1.05); }
+
+    /* --- Headings --- */
+    .section-header { margin-bottom: 60px; }
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--text-muted); }
+
+    /* --- Grid System --- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    .col-4 { grid-column: span 4; } /* 3 cards per row */
+    .col-6 { grid-column: span 6; } /* 2 cards per row */
+    .col-12 { grid-column: span 12; }
+
+    /* --- Content Cards --- */
+    .card {
+      background: linear-gradient(180deg, rgba(20, 25, 45, 0.6), rgba(15, 20, 35, 0.4));
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    .card:hover .thumb img { transform: scale(1.1); }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card h4 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    
+    /* Override inline styles for consistency */
+    .card p b { color: var(--text-main) !important; }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: #000;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .project-link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .project-link:hover { text-decoration: underline; }
+
+    /* --- Footer --- */
+    footer {
+      background: #010205;
+      border-top: 1px solid var(--glass-border);
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+    
+    .foot-links a { color: var(--text-muted); margin: 0 10px; }
+    .foot-links a:hover { color: var(--primary); }
+
+    /* --- Scroll Animations --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Responsive/Mobile --- */
+    @media (max-width: 1024px) {
+      .col-4 { grid-column: span 6; } /* 2 per row on tablet */
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      
+      .links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: rgba(3, 7, 18, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        transition: 0.4s ease;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      }
+      
+      .links.active { right: 0; }
+      
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .intro-content p { margin: 0 auto 30px; }
+      .btn-group { justify-content: center; }
+      .tags { justify-content: center; }
+      
+      .col-4, .col-6 { grid-column: span 12; } /* 1 per row on mobile */
+      
+      .section-title { font-size: 2rem; }
+      section { padding: 60px 0; }
+      
+      .profile-frame {
+        max-width: 350px;
+        margin: 0 auto;
+      }
+    }
+
+    /* Scroll Indicator */
+    .scroll-down {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      animation: bounce 2s infinite; opacity: 0.6;
+    }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">SIFAT<span style="color:var(--primary)">.</span></a>
+      
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+      <nav class="links" id="nav-links">
+        <a href="#intro">Intro</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#ml">ML Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="intro" class="hero">
+    <div class="container hero-grid">
+      <div class="intro-content reveal">
+        <h1>Engineering Intelligent <br>Health Solutions.</h1>
+        <p>
+          I'm <b>K. M. Sifat</b>—an engineer and researcher fusing biomedical innovation with modern machine learning. I build accessible diagnostics, digital health products, and intelligent decision support systems.
+        </p>
+        
+        <div class="tags">
+          <span class="tag">Biomedical Engineering</span>
+          <span class="tag">AI in Healthcare</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">SolidWorks</span>
+        </div>
+
+        <div class="btn-group">
+          <a href="#ml" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+      </div>
+      
+      <div class="profile-frame reveal">
+        <img src="me1 (2).jpg" alt="Sifat Portrait" />
+      </div>
+    </div>
+    
+    <div class="scroll-down">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+      </svg>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Education Background</h2>
+        <p class="section-sub">The academic foundations shaping my research.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card col-4">
+          <div class="badge">B.Sc. Biomedical Engineering</div>
+          <h4>KUET</h4>
+          <p>Focused on biomedical signal processing & microwave imaging. Led capstone on patient-centered diagnostics.</p>
+        </div>
+        <div class="card col-4">
+          <div class="badge">HSC (Science)</div>
+          <h4>Bir Sreastha Nooe Mohammad Public College</h4>
+          <p>GPA 5.00/5.00. Built strong foundation in physics and mathematics.</p>
+        </div>
+        <div class="card col-4">
+          <div class="badge">Certifications</div>
+          <h4>Coursera & Online</h4>
+          <ul>
+            <li>Bacterial Bioinformatics</li>
+            <li>Mathematics for ML</li>
+            <li>MLOps Specialization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Leadership, management, and community impact.</p>
+      </div>
+      
+      <div class="grid">
+        <div class="card col-4">
+          <div class="thumb"><img src="Dinning Monitor.jpeg" alt="Dining Monitor"></div>
+          <h4>Dining Monitor</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">Dr. M. A Rashid Hall, KUET | 2024-2025</p>
+          <p>Oversaw operations for hundreds of students. Implemented financial accountability, improved staff pay scale, and upgraded facility hygiene/ventilation.</p>
+          <div class="tags">
+            <span class="tag">Leadership</span>
+            <span class="tag">Ops</span>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="feast.jpeg" alt="Feast"></div>
+          <h4>Annual Feast Organizer</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">Jan 2025</p>
+          <p>Arranged a grand feast for 500 residents. Managed vendor negotiations for cost optimization and coordinated food service logistics.</p>
+          <div class="tags">
+            <span class="tag">Event Mgmt</span>
+            <span class="tag">Budgeting</span>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Teaching"></div>
+          <h4>Teaching & Mentoring</h4>
+          <p class="text-sm" style="color:var(--primary); margin-bottom:8px;">2019 - Present</p>
+          <p>Mentored 20+ high school students and worked with private coaching centers, focusing on science fundamentals and academic success.</p>
+          <div class="tags">
+            <span class="tag">Mentorship</span>
+            <span class="tag">Training</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ml">
+    <div class="container reveal">
+      <div class="section-header">
+        <h2 class="section-title">Machine Learning Projects</h2>
+        <p class="section-sub">Rigorous, explainable AI applied to complex datasets.</p>
+      </div>
+
+      <div class="grid">
+        
+        <div class="card col-4">
+          <div class="thumb"><img src="result_ped_seg.png" alt="Echo Segmentation"></div>
+          <span class="badge">Medical Segmentation</span>
+          <h4>Pediatric Left Ventricle Segmentation</h4>
+          <p>Estimated ejection fraction from pediatric echocardiograms using <b>DeepLabV3+</b>. Achieved IOU 0.89 (Train) / 0.84 (Test).</p>
+          <a href="https://github.com/Sifatkhan-1915020/medical-image-segmentation-/blob/main/echonet_pediatric.ipynb" class="project-link">View Code & Results &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="EEG_CHB_MIT.png" alt="EEG"></div>
+          <span class="badge">Signal Processing</span>
+          <h4>EEG Preprocessing (CHB-MIT)</h4>
+          <p>Processed scalp EEG data from pediatric patients with drug-resistant epilepsy. Segmented 5-second epochs to distinguish seizure activity.</p>
+          <a href="https://github.com/Sifatkhan-1915020/CHb-MIT-EEG/tree/main/Preprocessing" class="project-link">View Pipeline &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="eeg_emotion.png" alt="Emotion AI"></div>
+          <span class="badge">Affective Computing</span>
+          <h4>EEG Emotion Classification</h4>
+          <p> utilized the SEED-V dataset (62 channels) to classify emotional states (Positive, Neutral, Negative) evoked by film clips.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/tree/main/EEG-SEED-V" class="project-link">View Project &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="skin_lession.png" alt="Skin Lesion"></div>
+          <span class="badge">Computer Vision</span>
+          <h4>Skin Lesion Segmentation</h4>
+          <p>Applied UNET and DeepLabV3 models on the Skin Lesion Dataset. Includes manual mask generation and moderate segmentation results.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/skin_lession_detection.ipynb" class="project-link">View Notebook &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="sentiment.jpg" alt="FinBERT"></div>
+          <span class="badge">NLP</span>
+          <h4>Financial Sentiment Analysis</h4>
+          <p>Fine-tuned a Pretrained Transformer (FinBERT) on FiQA & Financial PhraseBank. Achieved ~81% accuracy.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/financial_sentiment_analysis.ipynb" class="project-link">View Analysis &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="food selection.png" alt="Snacks ViT"></div>
+          <span class="badge">Vision Transformer</span>
+          <h4>Snack Classification with ViT</h4>
+          <p>Classified 20 types of snacks using Google Open Images dataset. The Vision Transformer model achieved 98.40% accuracy.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/vit-implementation.ipynb" class="project-link">View Implementation &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="ASD_img.png" alt="ASD"></div>
+          <span class="badge">Cardiology AI</span>
+          <h4>Atrial Septal Defect (ASD) Classifier</h4>
+          <p>Utilized ViT on apical 4-chamber echocardiogram videos (243 cases). Achieved ~94.00% diagnostic accuracy.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/asd-vit.ipynb" class="project-link">View Code &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="PAH_image.png" alt="PAH"></div>
+          <span class="badge">Cardiology AI</span>
+          <h4>Pulmonary Arterial Hypertension</h4>
+          <p>Detecting PAH from 507 catheterization-confirmed cases using Video Transformers on echo frames. Accuracy: ~98%.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/pah-vit.ipynb" class="project-link">View Code &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="cig_peaky.png" alt="Smoking Detection"></div>
+          <span class="badge">Behavioral AI</span>
+          <h4>Smoker Detection</h4>
+          <p>Classified 1120 images (Smoking vs Not) with challenging poses and gestures using Vision Transformers.</p>
+          <a href="https://github.com/Sifatkhan-1915020/transformer_projects/blob/main/smoking-classify-vit%20(1).ipynb" class="project-link">View Code &rarr;</a>
+        </div>
+
+        <div class="card col-4">
+          <div class="thumb"><img src="MWI_image.png" alt="Microwave"></div>
+          <span class="badge">Microwave Imaging</span>
+          <h4>Breast Tumor Radius Estimation</h4>
+          <p>Microstrip antenna simulation data. Used ViT/ResNet50 feature extractors + SVM to estimate tumor size (0-20mm).</p>
+          <a href="https://www.kaggle.com/code/sifatkhanxd/notebookb26efe9f85" class="project-link">View Kaggle &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <h2 style="margin-bottom:20px">Let's Connect</h2>
+      <div class="foot-links">
+        <a href="mailto:sifat.engineer@example.com">Email</a>
+        <a href="https://linkedin.com">LinkedIn</a>
+        <a href="https://github.com">GitHub</a>
+      </div>
+      <p style="margin-top:30px; color:var(--text-muted); font-size:0.9rem;">
+        &copy; 2026 K. M. Sifat. Designed with <span style="color:var(--secondary)">❤</span> & Code.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const links = document.querySelectorAll('.links a');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      
+      // Animate Hamburger
+      const bars = hamburger.querySelectorAll('.bar');
+      if(navLinks.classList.contains('active')) {
+        bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+        bars[1].style.opacity = '0';
+        bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+      } else {
+        bars[0].style.transform = 'none';
+        bars[1].style.opacity = '1';
+        bars[2].style.transform = 'none';
+      }
+    });
+
+    // Close mobile menu when a link is clicked
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        const bars = hamburger.querySelectorAll('.bar');
+        bars[0].style.transform = 'none';
+        bars[1].style.opacity = '1';
+        bars[2].style.transform = 'none';
+      });
+    });
+
+    // Scroll Reveal Animation
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+
+  <!-- Instrumentation Projects -->
+  
+
+
+  <section id="instrumentation">
+    <div class="container reveal">
+      <h3 class="section-title">Instrumentation projects</h3>
+      <p class="section-sub">From sensors to systems — practical, reliable builds.</p>
+      <div class="grid" >
+              <!---IP1-->
+     <div class="card col-3" style=" border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="ip1_1.png" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="IP1_2.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="IP1_3.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;">&#10094;</button>
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Healthcare Automation</div>
+  <h4> Blood Back Flow Prevention in IV Setup</h4>
+  <p>
+    you can download the project report from 
+    <a href="32_project_report.pdf" download="Blood_Back_Flow_Prevention_Project.pdf" 
+   style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+   📄 Download PDF
+    </a>
+
+    
+    <br>
+    ✅ When saline bag (IV bag) becomes empty blood back flow in the IV pipe<br>
+    ✅ Here use load cell to calculate the weight of the saline bag<br>
+    ✅ When its become empty then the solenoidal valve is activated to prevent back flow of blood<br>
+    ✅ Everything is controlled by Arduino Uno<br>
+    ✅ IoT based monitoring system has been developed using Blynk app<br>
+    ✅ Here also LED & LDR system has been used to detect the air bubble in the IV pipe<br>
+    ✅ Load cell-solenoidal valve system is calibrated properly for accurate operation<br>
+    ✅ Load cell-solenoidal valve system provides around 98% accuracy <br>
+    ✅ Bubble detection must be more optimized and calibrated for better result <br>
+    
+  </p>
+</div>
+
+<script>
+let currentIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
+
+function showSlide(index) {
+  if (index >= slides.length) currentIndex = 0;
+  else if (index < 0) currentIndex = slides.length - 1;
+  else currentIndex = index;
+  
+  slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+document.querySelector(".next").addEventListener("click", () => showSlide(currentIndex + 1));
+document.querySelector(".prev").addEventListener("click", () => showSlide(currentIndex - 1));
+</script>
+
+    <!---IP2-->
+     <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider1" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_1.png" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_2.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_3.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_4.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_5.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="dia_6.png" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+    <!-- Inline JS in buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex1=(currentIndex1<=0?slides1.length-1:currentIndex1-1);document.getElementById('slider1').style.transform='translateX(-'+(currentIndex1*100)+'%)';">&#10094;</button>
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex1=(currentIndex1>=slides1.length-1?0:currentIndex1+1);document.getElementById('slider1').style.transform='translateX(-'+(currentIndex1*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Healthcare Assistance</div>
+  <h4>Diatracker: A Multimodal Diabetes Assistance Device</h4>
+  <p>
+    you can download the project report from 
+    <a href="diatracker.pdf" download="Diatracker_Project_Report.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+    ✅ Provide autmatic/semiautomatic insulin infusion system & app control insulin infusion system<br>
+    ✅ Provide noninvasive blood glucose monitoring system<br>
+    ✅ Provide noninvasive cholesterol monitoring system<br>
+    ✅ Provide noninvasive cholesterol monitoring system<br>
+    ✅ Provide assistance app for AI based diabetic foot ulcer detection<br>
+    ✅ Provide real time monitoring system<br>
+    ✅ Using Esp32, Servo-motor, syringe<br>
+    ✅ IoT based monitoring system has been developed using Blynk app<br>
+    ✅ Webapp designed using HTML, CSS, JavaScript, Flask(backend)<br>
+    ✅ Noninvasive blood glucose & cholesterol monitoring system done by estimation model from real lab data in KUET Medical Center<br>
+It is already published in IEEE Xplore. <br>
+    <a href="https://doi.org/10.1109/QPAIN66474.2025.11172255">
+        <span class="tag">IEEE Xplore Link</span> </a>
+  </p>
+</div>
+
+<script>
+  // initialize variables once
+  let currentIndex1 = 0;
+  const slides1 = document.querySelectorAll("#slider1 .slide");
+</script>
+        
+<!---IP3-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider2" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="airbender_1.jpg" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="airbender_2.jpeg" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="airbender_3.jpeg" alt="Tumor Radius Estimation" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex2=(currentIndex2<=0?slides2.length-1:currentIndex2-1);document.getElementById('slider2').style.transform='translateX(-'+(currentIndex2*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex2=(currentIndex2>=slides2.length-1?0:currentIndex2+1);document.getElementById('slider2').style.transform='translateX(-'+(currentIndex2*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Lowcost Monitoring</div>
+  <h4>AirBender: Low Cost, Portable, Plug&play Air Quality Monitoring Device</h4>
+  <p>
+    you can download the project report from 
+    <a href="Team Airbenders_Project Ba-U.pdf" download="AirBender_Project_Report.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Collaborated with my team to develop a plug-and-play air quality monitoring device <br>
+✅ Responsible for circuit implementation and 3D design & printing <br>
+✅ Enabled user flexibility to select which air or gas parameters to monitor <br>
+✅ Achieved a well-executed and professionally 3D-printed implementation <br>
+✅ Monitoring performance is highly reliable and close to precise measurements <br>
+✅ Developed using Arduino, MQ gas sensors, and a novel plug-in enclosure design <br>
+✅ Implemented an IoT-based real-time monitoring system <br>
+✅ Validated results by comparing with commercially available air quality devices <br>
+✅ Awarded two technical competition wins for this project <br>
+
+    
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex2 = 0;
+  const slides2 = document.querySelectorAll("#slider2 .slide");
+</script>
+
+
+
+<!---IP3-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider3" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="RC_1.jpg" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+  <video src="RC_2.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+  <div class="slide" style="min-width:100%;">
+  <video src="RC_3.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:100%; object-fit:scale-down; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex3=(currentIndex3<=0?slides3.length-1:currentIndex3-1);document.getElementById('slider3').style.transform='translateX(-'+(currentIndex3*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex3=(currentIndex3>=slides3.length-1?0:currentIndex3+1);document.getElementById('slider3').style.transform='translateX(-'+(currentIndex3*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Remote controlling</div>
+  <h4>Remote Control Car for Medical Purpose</h4>
+  <p>
+    you can download the project report from 
+    <a href="robo nurse assist.pdf" download="robo_nurse_assist.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Collaborated with my team to develop a plug-and-play air quality monitoring device <br>
+✅ Responsible for circuit implementation and 3D design & printing <br>
+✅ Enabled user flexibility to select which air or gas parameters to monitor <br>
+✅ Achieved a well-executed and professionally 3D-printed implementation <br>
+✅ Monitoring performance is highly reliable and close to precise measurements <br>
+✅ Developed using Arduino, MQ gas sensors, and a novel plug-in enclosure design <br>
+✅ Implemented an IoT-based real-time monitoring system <br>
+✅ Validated results by comparing with commercially available air quality devices <br>
+✅ Awarded two technical competition wins for this project <br>
+
+    
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex3 = 0;
+  const slides3 = document.querySelectorAll("#slider3 .slide");
+</script>
+
+
+
+<!---IP5-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div id="slider4" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="heart_2.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+     <div class="slide" style="min-width:100%;">
+        <img src="heart_3.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="heart_4.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="heart_1.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+
+ 
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex4=(currentIndex4<=0?slides4.length-1:currentIndex4-1);document.getElementById('slider4').style.transform='translateX(-'+(currentIndex4*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex4=(currentIndex4>=slides4.length-1?0:currentIndex4+1);document.getElementById('slider4').style.transform='translateX(-'+(currentIndex4*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Telemedicine Monitoring</div>
+  <h4>Telemedicine for Real Time ECG Monitoring</h4>
+  <p>
+    you can download the project report from 
+    <a href="heart_care.pdf" download="heart_care.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Developed an embedded system project where ECG is continuously monitored through a mobile application <br>
+✅ Used the AD8232 ECG module, integrated with Arduino Uno and a Wi-Fi module for real-time data transmission <br>
+✅ In the team, my role focused on ECG circuit implementation and mobile app development <br>
+
+✅ Snapshot of the app: <img src="heart_3.jpeg" alt="ECG Monitoring" style="width:100%; height:70%; object-fit:contain; display:block;"><br>
+
+You can download the app apk file from this link. <br>
+    <a href="https://github.com/Sifatkhan-1915020/MIT_App_Inventor_Project/blob/main/Smart_Ward.apk">
+        <span class="tag">App apk </span> </a>
+
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex4 = 0;
+  const slides4 = document.querySelectorAll("#slider4 .slide");
+</script>
+
+
+<!---IP6-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+      <div id="slider5" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="hr_1.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+     <div class="slide" style="min-width:100%;">
+        <img src="hr_2.jpeg" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="hr_0.png" alt="Breast tumor Classification" style="width:100%; height:70%; object-fit:contain; display:block;">
+      </div>
+       <div class="slide" style="min-width:100%;">
+  <video src="hr_3.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:70%; object-fit:contain; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+ 
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex5=(currentIndex5<=0?slides5.length-1:currentIndex5-1);document.getElementById('slider5').style.transform='translateX(-'+(currentIndex5*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex5=(currentIndex5>=slides5.length-1?0:currentIndex5+1);document.getElementById('slider5').style.transform='translateX(-'+(currentIndex5*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge"> Healthcare Monitoring</div>
+  <h4>Real-Time Non-invasive Heart Rate Monitoring</h4>
+  <p>
+    you can download the project report from 
+    <a href="hr.pdf" download="heart_rate.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Non-invasive heart rate monitoring is day by day becoming popular <br>
+✅ We provide low cost heart rate monitoring solutions in this project<br>
+✅ LED-Phototransistor based system is designed and Implemented<br>
+✅ Signal is processed by Arduino Uno and transmitted to mobile app through Wi-Fi module<br>
+
+✅ Snapshot of the circuit is : <img src="hr_0.png" alt="ECG Monitoring" style="width:100%; height:300%; object-fit:contain; display:block;"><br>
+
+
+
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex5 = 0;
+  const slides5 = document.querySelectorAll("#slider5 .slide");
+</script>
+
+
+<!---IP7-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+      <div id="slider6" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="venti_1.jpeg" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+     <div class="slide" style="min-width:100%;">
+        <img src="venti_2.jpeg" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      
+       <div class="slide" style="min-width:100%;">
+  <video src="ventilator.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+ 
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex6=(currentIndex6<=0?slides6.length-1:currentIndex6-1);document.getElementById('slider6').style.transform='translateX(-'+(currentIndex6*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex6=(currentIndex6>=slides6.length-1?0:currentIndex6+1);document.getElementById('slider6').style.transform='translateX(-'+(currentIndex6*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge"> Biomedical Device</div>
+  <h4>Low Cost Ventilator for Covid Patient</h4>
+  <p>
+    you can download the project report from 
+    <a href="ventilator.pdf" download="ventilator.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a>
+    <br>
+✅ Contributed to a thesis project as an assistant to my senior, gaining hands-on research experience <br>
+✅ Delivered a low-cost ventilator solution aimed at accessibility and affordability <br>
+✅ Designed for easy setup, featuring a stable and balanced air-pushing mechanism with an efficient air pressure management system <br>
+✅ Executed the project in three structured phases: initial simulation, system implementation, and lab testing & validation <br>
+✅ My role focused on circuit implementation and simulation setup <br>
+✅ Utilized SolidWorks for mechanical design and fluid flow simulation <br>
+✅ Conducted laboratory testing using the BIOPAC ventilator testing system <br>
+
+
+
+
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex6 = 0;
+  const slides6 = document.querySelectorAll("#slider6 .slide");
+</script>
+
+
+<!---IP8-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+      <div id="slider7" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="nerve_01.jpeg" alt="Breast tumor Classification" style="width:100%; height:50%; object-fit:contain; display:block;">
+      </div>
+     <div class="slide" style="min-width:100%;">
+        <img src="nerve_full_setup.jpeg" alt="Breast tumor Classification" style="width:100%; height:50%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="Nerve Result.jpeg" alt="Breast tumor Classification" style="width:100%; height:50%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="nerve_01.jpeg" alt="Breast tumor Classification" style="width:100%; height:50%; object-fit:contain; display:block;">
+      </div>
+      
+       <div class="slide" style="min-width:100%;">
+  <video src="nerve_full work.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:50%; object-fit:contain; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<div class="slide" style="min-width:100%;">
+  <video src="nerve_3.mp4" 
+         autoplay 
+         muted 
+         loop 
+         style="width:100%; height:50%; object-fit:contain; display:block;">
+    Your browser does not support the video tag.
+  </video>
+</div>
+ 
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex7=(currentIndex7<=0?slides7.length-1:currentIndex7-1);document.getElementById('slider7').style.transform='translateX(-'+(currentIndex7*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex7=(currentIndex7>=slides7.length-1?0:currentIndex7+1);document.getElementById('slider7').style.transform='translateX(-'+(currentIndex7*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge"> Biomedical Device</div>
+  <h4>Low Cost Remotely Controlled Transcutaneous Nerve Stimulator</h4>
+  <p>
+    you can download the project report from 
+    <a href="TENS.pdf" download="nerve_stimulator.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a> 
+    <br>
+✅ A collaborative project carried out with one of my classmates <br>
+✅ Developed a remotely controlled and observable Transcutaneous Electrical Nerve Stimulation (TENS) device, representing the core innovation of the project <br>
+✅ The TENS device delivers a strong output of ~40 V peak and ~84 V peak-to-peak, demonstrating robust performance <br>
+✅ The key innovation lies in fully remote control via a mobile app, with stimulation signals visualized as real-time graphs on a display <br>
+✅ Initially, the circuit was designed and simulated, then implemented on a breadboard, followed by observation and calibration using an oscilloscope in the Instrumentation Lab, Biomedical Engineering Department, KUET <br>
+✅ Later, Arduino and an LED display were integrated to visualize the stimulation output for an enhanced real-time user experience <br>
+✅ Developed a mobile application using MIT App Inventor to remotely control stimulation parameters and observe output responses <br>
+✅ The circuit consists of an input voltage source, inverter, diodes, PNP transistor, microcontroller, and LED display for monitoring <br>
+✅ My role involved designing, simulating, and implementing the operating circuit, as well as calibrating the output response <br>
+✅ I also independently developed the mobile application using MIT App Inventor <br>
+✅ The project was fully funded by my project partner <br>
+you can download the App apk file from this link.
+<a href="https://github.com/Sifatkhan-1915020/MIT_App_Inventor_Project/blob/main/Nerve%20Stimulator.apk" download="nerve_stimulator.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#54e06c; color:#0a0a0a; text-decoration:none; border-radius:5px;">
+       📄 Nerve Stimulator.apk
+    </a> 
+✅ Snapshot of the circuit is : <img src="nerve_circuit.jpeg" alt="ECG Monitoring" style="width:100%; height:300%; object-fit:contain; display:block;"><br>
+
+
+
+
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex7 = 0;
+  const slides7 = document.querySelectorAll("#slider7 .slide");
+</script>
+
+
+<!---IP8-->
+     
+ <div class="card col-3" style="border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+      <div id="slider8" class="slider" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide" style="min-width:100%;">
+        <img src="pat_1.png" alt="Breast tumor Classification" style="width:100%; height:50%; object-fit:contain; display:block;">
+      </div>
+     <div class="slide" style="min-width:100%;">
+        <img src="pat_2.jpeg" alt="Breast tumor Classification" style="width:100%; height:50%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide" style="min-width:100%;">
+        <img src="pat_3.jpeg" alt="Breast tumor Classification" style="width:100%; height:50%; object-fit:contain; display:block;">
+      </div>
+    
+
+
+ 
+     
+    </div>
+
+    <!-- Buttons -->
+    <button class="prev" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;"
+      onclick="currentIndex8=(currentIndex8<=0?slides8.length-1:currentIndex8-1);document.getElementById('slider8').style.transform='translateX(-'+(currentIndex8*100)+'%)';">&#10094;</button>
+
+    <button class="next" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;"
+      onclick="currentIndex8=(currentIndex8>=slides8.length-1?0:currentIndex8+1);document.getElementById('slider8').style.transform='translateX(-'+(currentIndex8*100)+'%)';">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge"> Biomedical Monitoring</div>
+  <h4>Low Cost Patient Health Monitoring System with Android App</h4>
+  <p>
+    you can download the project report from 
+    <a href="patient_monitor.pdf" download="patient_monitor.pdf" 
+       style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+       📄 Download PDF
+    </a> 
+    <br>
+✅ A collaborative project carried out with a team <br>
+✅ Developed a remotely controlled and observable patient monitoring system <br>
+✅ It provides several option of monitoring: body temperature, Heart rate, Oxygen Saturation (SpO2), Room temperature, Humidity and Body Movement Data<br>
+✅ It provides low cost remotely essential patient monitoring, visualization and app based access. <br>
+✅ My role involved designing, simulating, and implementing the operating circuit, as well as calibrating the output evaluation <br>
+✅ I also independently developed the mobile application using MIT App Inventor <br>
+
+you can download the App apk file from this link.
+<a href="https://github.com/Sifatkhan-1915020/MIT_App_Inventor_Project/blob/main/Patient%20Monitor.apk" download="patient_monitor.apk" 
+       style="display:inline-block; padding:10px 20px; background:#54e06c; color:#0a0a0a; text-decoration:none; border-radius:5px;">
+       📄 Patient Monitor.apk
+    </a> 
+✅ Snapshot of the app is : <img src="pat_4.jpeg" alt="ECG Monitoring" style="width:100%; height:300%; object-fit:contain; display:block;"><br>
+
+
+
+
+   </p>
+</div>
+
+<script>
+  // Unique variables for this card
+  let currentIndex8 = 0;
+  const slides8 = document.querySelectorAll("#slider8 .slide");
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </section>
+
+ <!---CIRCUIT--->
+<section id="circuit">
+    <div class="container reveal">
+      <h3 class="section-title">Circuit Schematic & PCB Design</h3>
+      <p class="section-sub">Design, simulation and virtual implementation of electronic circuits in various circuit design software</p>
+      <div class="grid" >
+              <!--Circui1-->
+     <div class="card col-3" style=" border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div class="slider1c" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide1c" style="min-width:100%;">
+        <img src="schematic_sound_switch_01.png" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide1c" style="min-width:100%;">
+        <img src="pcb_sound_switch_1.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide1c" style="min-width:100%;">
+        <img src="3D_airMonitor.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+    <button class="prev1c" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;">&#10094;</button>
+    <button class="next1c" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Environment Monitoring</div>
+  <h4> Dust & Pollution Detection Using OP-AMP
+  </h4>
+  <p>
+    you can download the project from 
+    <a href="Sound_swtich.pdsprj" download="Sound_Activated_Switch_Project.pdsprj" 
+   style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+   📄 Download Proteus File
+    </a>
+    you can download the 3D file of PCB from 
+    <a href="sound_swtich.3DS" download="Sound_Activated_Switch_Project.3DS" 
+   style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+   📄 PCB 3DS File
+    </a>
+    
+    <br>
+    ✅ Dust monitoring system using LED, LDR, and OP-AMP<br>
+    ✅ In a clean room, the LED light does not reflect back to the LDR or only a very small amount is reflected<br>
+    ✅ When dust particles are present, they scatter the LED light, causing the LDR to produce a voltage<br>
+    ✅ The OP-AMP amplifies this small voltage, and once it exceeds the threshold level, it triggers a high voltage output<br>
+    
+  </p>
+</div>
+
+<script>
+let currentIndex1c = 0;
+const slides1c = document.querySelectorAll(".slide1c");
+const slider1c = document.querySelector(".slider1c");
+
+function showSlide(index) {
+  if (index >= slides1c.length) currentIndex1c = 0;
+  else if (index < 0) currentIndex1c = slides1c.length - 1;
+  else currentIndex1c = index;
+  
+  slider1c.style.transform = `translateX(-${currentIndex1c * 100}%)`;
+}
+
+document.querySelector(".next1c").addEventListener("click", () => showSlide(currentIndex1c+ 1));
+document.querySelector(".prev1c").addEventListener("click", () => showSlide(currentIndex1c - 1));
+</script>
+
+   
+
+<!---circuit2-->
+
+     <div class="card col-3" style=" border:1px solid #02010f; padding:15px; border-radius:8px; background:#01031a; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <!-- Image Slider -->
+  <div class="slider-container" style="position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:8px;">
+    <div class="slider2c" style="display:flex; transition:transform 0.5s ease-in-out;">
+      <div class="slide2c" style="min-width:100%;">
+        <img src="LPF_PCB_3D.png" alt="Breast tumor Classification" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide2c" style="min-width:100%;">
+        <img src="lpf_pcb_Schematic.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+      <div class="slide2c" style="min-width:100%;">
+        <img src="LPF_schematic.png" alt="Microwave Imaging Result" style="width:100%; height:100%; object-fit:contain; display:block;">
+      </div>
+    </div>
+    <button class="prev2c" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; left:10px;">&#10094;</button>
+    <button class="next2c" style="position:absolute; top:50%; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; right:10px;">&#10095;</button>
+  </div>
+
+  <!-- Text Section -->
+  <div class="badge">Signal Processing</div>
+  <h4> Low Pass Passive Filter Design</h4>
+
+  <p>
+    you can download the project from 
+    <a href="Low Pass Filter.pdsprj" download="Low_Pass_Filter_Project.pdsprj" 
+   style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+   📄 Download Proteus File
+    </a>
+    you can download the 3D file of PCB from 
+    <a href="LPF.3DS" download="Low_Pass_Filter_Project.3DS" 
+   style="display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">
+   📄 PCB 3DS File
+    </a>
+    
+    <br>
+    ✅ Dust monitoring system using LED, LDR, and OP-AMP<br>
+    ✅ In a clean room, the LED light does not reflect back to the LDR or only a very small amount is reflected<br>
+    ✅ When dust particles are present, they scatter the LED light, causing the LDR to produce a voltage<br>
+    ✅ The OP-AMP amplifies this small voltage, and once it exceeds the threshold level, it triggers a high voltage output<br>
+    
+  </p>
+</div>
+
+<script>
+let currentIndex2c = 0;
+const slides2c = document.querySelectorAll(".slide2c");
+const slider2c = document.querySelector(".slider2c");
+
+function showSlide(index) {
+  if (index >= slides2c.length) currentIndex2c = 0;
+  else if (index < 0) currentIndex2c = slides2c.length - 1;
+  else currentIndex2c = index;
+  
+  slider2c.style.transform = `translateX(-${currentIndex2c * 100}%)`;
+}
+
+document.querySelector(".next2c").addEventListener("click", () => showSlide(currentIndex2c+ 1));
+document.querySelector(".prev2c").addEventListener("click", () => showSlide(currentIndex2c - 1));
+</script>
+
+
+
+
+
+
+      </div>
+    </div>
+</section>
+
+
+  <!---3D DESIGN--->
+<section class="container reveal" style="font-family: sans-serif; padding: 20px;">
+  
+  <h3 class="section-title" style="text-align: center; margin-bottom: 10px;">3D Design</h3>
+  <p class="section-sub" style="text-align: center; margin-bottom: 30px; color: #666;">3D Design Using Solidworks </p>
+
+  <div style="position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    
+    <button onclick="moveSlide(-1)" style="position: absolute; top: 40%; left: 10px; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 15px; cursor: pointer; font-size: 18px; border-radius: 50%; z-index: 10;">
+      &#10094;
+    </button>
+
+    <div id="track" style="display: flex; transition: transform 0.5s ease-in-out;">
+
+      <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="solid_1.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">Air Pressure Transducer</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed in <span class="badge">Solidworks</span> and rendered in 
+          <span class="badge">Blender</span></p> </div>
+            
+        </div>
+         <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="solid_2.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">Air Pressure Transducer</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed in <span class="badge">Solidworks</span> and rendered in 
+          <span class="badge">Blender</span></p></div>
+
+        </div>
+
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_1.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A flooded Subway</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="Blender_2.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A flooded Subway (2nd View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_3.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Mystic Room of Piano</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_4.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Dreamy Fuel Station (Design View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="Blender_5.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Dreamy Fuel Station (Render View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_6.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Dreamy Fuel Station (Render View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_7.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Minitruck (Render View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+          <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_8.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">Boat Beneath the Moon in the Ocean (Render View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_9.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Cozy Room (Render View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_10.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Cozy Room (Another Render View)</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+          <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_11.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">To The War!</h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+         <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_12.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Makup Room </h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+          <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_13.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Makup Room </h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_14.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Makup Room </h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+         <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_15.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Makup Room </h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_16.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Innovative Modern Bus Stop </h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+         <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_17.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Innovative Modern Bus Stop </h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: Cycle</span> </p></div>
+
+        </div>
+        <div style="min-width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; height: 350px;">
+          <img src="blender_18.jpg" alt="Low Noise Amplifier" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div style="background: #fff; padding: 20px; text-align: center;">
+          <h4 style="margin: 0 0 10px; font-size: 1.25rem; color: #333;">A Innovative Modern Bus Stop </h4>
+          <p style="margin: 0; color: #666; font-size: 1rem;">Designed & Rendered in <span class="badge">Blender, Render Engine: EVEEE</span> </p></div>
+
+        </div>
+      </div>
+     
+      
+     
+
+    </div>
+
+    <button onclick="moveSlide(1)" style="position: absolute; top: 40%; right: 10px; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 15px; cursor: pointer; font-size: 18px; border-radius: 50%; z-index: 10;">
+      &#10095;
+    </button>
+  
+  </div>
+</section>
+
+<script>
+  let currentIndex1S = 0;
+  
+  function moveSlide(direction) {
+    const track = document.getElementById('track');
+    // We select children specifically to avoid issues if other divs exist
+    const slides = track.children; 
+    const totalSlides = slides.length;
+
+    currentIndex1S += direction;
+
+    if (currentIndex1S >= totalSlides) {
+      currentIndex1S = 0;
+    }
+    if (currentIndex1S < 0) {
+      currentIndex1S = totalSlides - 1;
+    }
+
+    track.style.transform = `translateX(-${currentIndex1S * 100}%)`;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Interactivity & reveal on scroll -->
+  <script>
+    // Section reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const onScroll = () => {
+      const trigger = window.innerHeight * 0.92;
+      reveals.forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        if(top < trigger){ el.classList.add('show'); }
+      });
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('load', onScroll);
+
+    // Smooth highlight active nav link
+    const sections = [...document.querySelectorAll('section')];
+    const navLinks = [...document.querySelectorAll('.links a')];
+    const setActive = () => {
+      let idx = 0;
+      sections.forEach((s,i)=>{
+        const rect = s.getBoundingClientRect();
+        if(rect.top < window.innerHeight*0.3) idx = i;
+      });
+      navLinks.forEach(l=>l.style.color = 'var(--text)');
+      const activeId = sections[idx]?.id;
+      const activeLink = navLinks.find(l => l.getAttribute('href') === `#${activeId}`);
+      if(activeLink) activeLink.style.color = 'var(--primary)';
+    };
+    document.addEventListener('scroll', setActive, {passive:true});
+    window.addEventListener('load', setActive);
+
+    // Optional: gentle parallax glow on hero image
+    const glow = document.querySelector('.intro-glow');
+    document.addEventListener('mousemove', (e)=>{
+      if(!glow) return;
+      const x = (e.clientX / window.innerWidth - 0.5) * 10;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      glow.style.transform = `translate(${x}px, ${y}px)`;
+    }, {passive:true});
+  </script>
+</body>
+</html>

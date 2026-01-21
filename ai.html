@@ -1,0 +1,65 @@
+<div class="chatbot-container">
+    <div class="chatbot-header">
+        <h3>🤖 AI Assistant</h3>
+        <p>Ask anything about my portfolio!</p>
+    </div>
+    <iframe 
+        src="https://my-portfolio-chatbot-mht5r2e2bptewltvku4dtw.streamlit.app/?embed=true"
+        frameborder="0"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<style>
+    /* The Outside Container */
+    .chatbot-container {
+        width: 100%;
+        max-width: 900px; /* Limits width on big screens */
+        height: 700px;    /* Fixed height for scrolling */
+        margin: 40px auto; /* Centers it */
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15); /* Cool shadow */
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* The Header Area */
+    .chatbot-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple/Blue Gradient */
+        padding: 15px 25px;
+        color: white;
+        text-align: center;
+    }
+
+    .chatbot-header h3 {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 1.2rem;
+    }
+
+    .chatbot-header p {
+        margin: 5px 0 0;
+        font-size: 0.9rem;
+        opacity: 0.9;
+        font-family: sans-serif;
+    }
+
+    /* The Actual Iframe */
+    .chatbot-container iframe {
+        width: 100%;
+        flex-grow: 1; /* Fills remaining space */
+        border: none;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+        .chatbot-container {
+            height: 85vh; /* Takes up most of screen on mobile */
+            border-radius: 0; /* Square edges on mobile */
+            margin: 0;
+        }
+    }
+</style>

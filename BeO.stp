@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+  <Version>23.1</Version>
+  <Reference>{4F511B4D-2591-4F6E-AE36-182E22AA1669}</Reference>
+  <DocumentManager>
+    <Document>
+      <ID>{2D7F0384-8F62-4C55-BAC9-B06AC32B9BA5}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO.xsd</URL>
+      <Property>
+        <Name>Visible</Name>
+        <Type>11</Type>
+        <Value>-1</Value>
+      </Property>
+    </Document>
+    <Document>
+      <ID>{F64F4065-1A7F-403D-AAEA-6F28C1A17D44}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\BeO.param</URL>
+    </Document>
+    <Document>
+      <ID>{09E34F60-A287-4D52-957A-C08E4F884605}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\BeO.xsd</URL>
+    </Document>
+    <Document>
+      <ID>{7A66AFA7-F5AA-49CF-9A25-7BDFAE0A19AF}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\BeO.xtd</URL>
+    </Document>
+    <Document>
+      <ID>{B52F97C8-FC0C-444F-93A7-6B5EA600F9B3}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\BeO_BandStr.param</URL>
+    </Document>
+    <Document>
+      <ID>{52448D08-A7EA-47D4-9C2F-C59A5B1EF0D5}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\BeO_DOS.param</URL>
+    </Document>
+    <Document>
+      <ID>{7F46FF42-5066-4E98-91BE-4DFA649807B3}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\BeO_EELS.param</URL>
+    </Document>
+    <Document>
+      <ID>{95DF9B78-50EF-4400-BD05-FCB271384C59}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\SMCastep_Extension_BeO.xms</URL>
+    </Document>
+    <Document>
+      <ID>{9BFF2140-1F92-4AEA-B9EB-574E34AEB337}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt\BeO.castep</URL>
+    </Document>
+    <Document>
+      <ID>{F1F20480-CECB-4A80-A00C-C66D23EB8110}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO.param</URL>
+    </Document>
+    <Document>
+      <ID>{24D51E25-EADF-4241-ACAC-A8EF535342B1}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO.xsd</URL>
+    </Document>
+    <Document>
+      <ID>{5759C330-9816-40F9-B978-E79E7D598AEC}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO.xtd</URL>
+    </Document>
+    <Document>
+      <ID>{A8A64354-14CE-498F-82B9-22082F0BE874}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr.param</URL>
+    </Document>
+    <Document>
+      <ID>{DE01F135-7BD0-4559-B1C1-BEEA0C1979AE}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_DOS.param</URL>
+    </Document>
+    <Document>
+      <ID>{763C550F-0D64-4714-9393-061DC0A04F65}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_EELS.param</URL>
+    </Document>
+    <Document>
+      <ID>{9C7DB141-D255-43E8-BC04-ACFB43AFDFBE}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\SMCastep_Extension_BeO.xms</URL>
+    </Document>
+    <Document>
+      <ID>{37BD706B-FC7E-4BD7-9DEC-257C1341E1F3}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO Energies.xcd</URL>
+    </Document>
+    <Document>
+      <ID>{A0808988-17A1-47FC-942C-DEB408D9A43B}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO Convergence.xcd</URL>
+    </Document>
+    <Document>
+      <ID>{7A1F2F89-2CF0-4E5D-BC2A-7260CB1AFB6A}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO.castep</URL>
+    </Document>
+    <Document>
+      <ID>{ED92CEA5-97A8-4055-8DFE-C3A0B816D4BB}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO.bib</URL>
+    </Document>
+    <Document>
+      <ID>{611E7D93-CE4A-430B-A5FA-78B6E5DAFFDA}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr.castep</URL>
+    </Document>
+    <Document>
+      <ID>{3A6D142C-A887-4400-8455-7FF561218F70}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr.bib</URL>
+    </Document>
+    <Document>
+      <ID>{EAF619FF-371B-4502-93A2-CDF56B13582A}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_DOS.castep</URL>
+    </Document>
+    <Document>
+      <ID>{C001015A-45D5-47B1-AF37-4BE0A6D857B8}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_DOS.bib</URL>
+    </Document>
+    <Document>
+      <ID>{FD4283C7-C905-4F88-AE87-2249A3E78149}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_EELS.castep</URL>
+    </Document>
+    <Document>
+      <ID>{7D21CBF0-B222-4142-AFB4-AE5D86D3244B}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_EELS.bib</URL>
+    </Document>
+    <Document>
+      <ID>{7AAB5358-4387-466E-B6E5-9B43C28F4669}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure.xcd</URL>
+    </Document>
+    <Document>
+      <ID>{2436AE0B-B85A-4865-85F2-17EB5565CBCC}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (2).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{36747282-298E-441D-96BB-A75FE6215D4A}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (3).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{75B5E483-C123-43FB-8115-67FEAE416FED}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (4).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{4A3ADCC3-AD49-4E83-BC68-415C82791F09}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (5).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{0CDB43FF-AE94-4AC0-B981-62D998898122}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (6).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{796748E0-C1F2-48DB-A4E8-3ED7198A58CE}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (7).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{409FE4D0-0317-4870-AAD8-E19CF1D3F944}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (8).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{A871CA9D-4810-4ABF-BACC-E326720DE7AD}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr DOS.xcd</URL>
+    </Document>
+    <Document>
+      <ID>{41CC8458-D293-4423-BD13-4F5BA1BB67B9}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr DOS (2).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{CED47765-619B-4754-822A-39BE7AB70BE0}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr DOS (3).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{C45DDBEB-675C-429D-897B-7656657C5ED1}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO.param</URL>
+    </Document>
+    <Document>
+      <ID>{5615B07F-F1C7-4B7C-9817-3989C91920CE}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO.xsd</URL>
+    </Document>
+    <Document>
+      <ID>{1F776EBC-B1AB-4076-8890-48D379EA0CA5}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO.xtd</URL>
+    </Document>
+    <Document>
+      <ID>{7529C4CC-77AC-42CE-A991-8954B4DE5055}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield.param</URL>
+    </Document>
+    <Document>
+      <ID>{5604723C-E110-4076-99E6-46C08B843F98}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\SMCastep_Extension_BeO.xms</URL>
+    </Document>
+    <Document>
+      <ID>{DD69A49D-E9B9-4BCC-8E91-CBC0D6349903}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\Status.txt</URL>
+    </Document>
+    <Document>
+      <ID>{F7623662-EAC7-4093-9254-50506D460E13}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO Energies.xcd</URL>
+    </Document>
+    <Document>
+      <ID>{73154F0B-8B45-4FB8-B341-4C41ED79171C}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO Convergence.xcd</URL>
+    </Document>
+    <Document>
+      <ID>{64773803-7FF3-4C5D-B2F7-9EE06E9B7722}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO.castep</URL>
+    </Document>
+    <Document>
+      <ID>{5E918AD4-3E53-46AB-86E9-C65F3467117D}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO.bib</URL>
+    </Document>
+    <Document>
+      <ID>{034A882A-435A-40D1-9B7E-6442A8C57EA4}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield.castep</URL>
+    </Document>
+    <Document>
+      <ID>{A4D0D04F-6F72-45EF-A942-1753E445604B}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield.bib</URL>
+    </Document>
+    <Document>
+      <ID>{AE56A3E7-FDA8-42D4-B9F8-5ABBD65431EC}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield Raman.xcd</URL>
+    </Document>
+    <Document>
+      <ID>{A1805AF1-D82E-4776-8165-A8417DBBE88C}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield Raman (2).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{958D60C6-7EDE-46A5-A4E9-630F16DA13E2}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield Raman (3).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{7B21FB5F-D173-4ED4-B1FA-89894B6F22C6}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield Raman (4).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{CF00B9E7-3C89-41F3-A2A4-98B47B83C5D6}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield Raman (5).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{356F1DB8-04A7-42D0-8168-ACC4B2F950D4}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield Raman (6).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{387382EC-C949-424B-89D1-23DE0A5F93EE}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (3)\BeO_Efield Raman (7).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{10C3D985-E764-47C2-93CA-1C3605712F2A}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (9).xcd</URL>
+    </Document>
+    <Document>
+      <ID>{B7F123E4-430C-423F-8A8C-189AE5CA9B35}</ID>
+      <Paths>1</Paths>
+      <URL>.\BeO CASTEP GeomOpt (2)\BeO_BandStr Band Structure (10).xcd</URL>
+    </Document>
+  </DocumentManager>
+  <ViewRegistry>
+    <Frame>
+      <Active>false</Active>
+      <Left>0</Left>
+      <Top>0</Top>
+      <Width>1132</Width>
+      <Height>556</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{2D7F0384-8F62-4C55-BAC9-B06AC32B9BA5}</DocumentID>
+        <Type>SVViewer3D.Viewer3DControl</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>104</Left>
+      <Top>104</Top>
+      <Width>968</Width>
+      <Height>380</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{A1805AF1-D82E-4776-8165-A8417DBBE88C}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>130</Left>
+      <Top>130</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{958D60C6-7EDE-46A5-A4E9-630F16DA13E2}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>156</Left>
+      <Top>156</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{CF00B9E7-3C89-41F3-A2A4-98B47B83C5D6}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>182</Left>
+      <Top>182</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{356F1DB8-04A7-42D0-8168-ACC4B2F950D4}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>0</Left>
+      <Top>0</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{387382EC-C949-424B-89D1-23DE0A5F93EE}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>26</Left>
+      <Top>26</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{41CC8458-D293-4423-BD13-4F5BA1BB67B9}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>52</Left>
+      <Top>52</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{A871CA9D-4810-4ABF-BACC-E326720DE7AD}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>78</Left>
+      <Top>78</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{CED47765-619B-4754-822A-39BE7AB70BE0}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>104</Left>
+      <Top>104</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{409FE4D0-0317-4870-AAD8-E19CF1D3F944}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>130</Left>
+      <Top>130</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{796748E0-C1F2-48DB-A4E8-3ED7198A58CE}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>156</Left>
+      <Top>156</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{4A3ADCC3-AD49-4E83-BC68-415C82791F09}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>182</Left>
+      <Top>182</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{75B5E483-C123-43FB-8115-67FEAE416FED}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>0</Left>
+      <Top>0</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{36747282-298E-441D-96BB-A75FE6215D4A}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>26</Left>
+      <Top>26</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{2436AE0B-B85A-4865-85F2-17EB5565CBCC}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>52</Left>
+      <Top>52</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{7AAB5358-4387-466E-B6E5-9B43C28F4669}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>78</Left>
+      <Top>78</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{37BD706B-FC7E-4BD7-9DEC-257C1341E1F3}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>false</Active>
+      <Left>104</Left>
+      <Top>104</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>false</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{A0808988-17A1-47FC-942C-DEB408D9A43B}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+    <Frame>
+      <Active>true</Active>
+      <Left>130</Left>
+      <Top>130</Top>
+      <Width>972</Width>
+      <Height>384</Height>
+      <Maximized>true</Maximized>
+      <Minimized>false</Minimized>
+      <View>
+        <Active>true</Active>
+        <DocumentID>{10C3D985-E764-47C2-93CA-1C3605712F2A}</DocumentID>
+        <Type>MaterialsStudio.SMUIVChartViewer.ChartViewer,SMUIVChartViewer</Type>
+      </View>
+    </Frame>
+  </ViewRegistry>
+  <DocumentEventManager>
+    <DocumentRelation>
+      <DocRef1>{37BD706B-FC7E-4BD7-9DEC-257C1341E1F3}</DocRef1>
+      <DocRef2>{5759C330-9816-40F9-B978-E79E7D598AEC}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+    <DocumentRelation>
+      <DocRef1>{5759C330-9816-40F9-B978-E79E7D598AEC}</DocRef1>
+      <DocRef2>{37BD706B-FC7E-4BD7-9DEC-257C1341E1F3}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+    <DocumentRelation>
+      <DocRef1>{A0808988-17A1-47FC-942C-DEB408D9A43B}</DocRef1>
+      <DocRef2>{5759C330-9816-40F9-B978-E79E7D598AEC}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+    <DocumentRelation>
+      <DocRef1>{5759C330-9816-40F9-B978-E79E7D598AEC}</DocRef1>
+      <DocRef2>{A0808988-17A1-47FC-942C-DEB408D9A43B}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+    <DocumentRelation>
+      <DocRef1>{F7623662-EAC7-4093-9254-50506D460E13}</DocRef1>
+      <DocRef2>{1F776EBC-B1AB-4076-8890-48D379EA0CA5}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+    <DocumentRelation>
+      <DocRef1>{1F776EBC-B1AB-4076-8890-48D379EA0CA5}</DocRef1>
+      <DocRef2>{F7623662-EAC7-4093-9254-50506D460E13}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+    <DocumentRelation>
+      <DocRef1>{73154F0B-8B45-4FB8-B341-4C41ED79171C}</DocRef1>
+      <DocRef2>{1F776EBC-B1AB-4076-8890-48D379EA0CA5}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+    <DocumentRelation>
+      <DocRef1>{1F776EBC-B1AB-4076-8890-48D379EA0CA5}</DocRef1>
+      <DocRef2>{73154F0B-8B45-4FB8-B341-4C41ED79171C}</DocRef2>
+      <EHProgID>SMXQMUtilities.ChartTrajectoryEventHandler</EHProgID>
+    </DocumentRelation>
+  </DocumentEventManager>
+</Project>
